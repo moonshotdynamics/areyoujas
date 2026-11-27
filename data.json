@@ -3,7 +3,7 @@
  "stats": {
   "listings": 81,
   "matched": 1,
-  "suburb": "Rondebosch",
+  "suburbs": 1,
   "biggest_jump": 173,
   "median_ask": 4500000
  },
@@ -26,6 +26,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117749229"
   },
   {
@@ -46,6 +47,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117706872"
   },
   {
@@ -66,6 +68,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117787133"
   },
   {
@@ -86,6 +89,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117771205"
   },
   {
@@ -106,6 +110,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117771065"
   },
   {
@@ -126,6 +131,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117771047"
   },
   {
@@ -146,6 +152,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117843975"
   },
   {
@@ -167,6 +174,7 @@
    "jump": 173,
    "per_year": 173,
    "sold_source": "property24 deeds",
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117843182"
   },
   {
@@ -187,6 +195,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117826798"
   },
   {
@@ -207,6 +216,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117837001"
   },
   {
@@ -227,6 +237,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117777752"
   },
   {
@@ -247,6 +258,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117777066"
   },
   {
@@ -267,6 +279,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117783571"
   },
   {
@@ -287,6 +300,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117793127"
   },
   {
@@ -307,6 +321,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117847484"
   },
   {
@@ -327,6 +342,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117848237"
   },
   {
@@ -347,6 +363,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117754833"
   },
   {
@@ -367,6 +384,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117776688"
   },
   {
@@ -387,6 +405,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117749765"
   },
   {
@@ -407,6 +426,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/111767412"
   },
   {
@@ -427,6 +447,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117830214"
   },
   {
@@ -447,6 +468,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/5548"
   },
   {
@@ -467,6 +489,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/116945029"
   },
   {
@@ -487,6 +510,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117661667"
   },
   {
@@ -507,6 +531,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117821805"
   },
   {
@@ -527,6 +552,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117675766"
   },
   {
@@ -547,6 +573,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117782748"
   },
   {
@@ -567,6 +594,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117669748"
   },
   {
@@ -587,6 +615,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117799023"
   },
   {
@@ -607,6 +636,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117738227"
   },
   {
@@ -627,6 +657,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117711946"
   },
   {
@@ -647,6 +678,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117773054"
   },
   {
@@ -667,6 +699,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117627949"
   },
   {
@@ -687,6 +720,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117757476"
   },
   {
@@ -707,6 +741,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117614798"
   },
   {
@@ -727,6 +762,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117594958"
   },
   {
@@ -747,6 +783,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117615334"
   },
   {
@@ -767,6 +804,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117527252"
   },
   {
@@ -787,6 +825,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117685259"
   },
   {
@@ -807,6 +846,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117749334"
   },
   {
@@ -827,6 +867,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117741369"
   },
   {
@@ -847,6 +888,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117698707"
   },
   {
@@ -867,6 +909,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117541156"
   },
   {
@@ -887,6 +930,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117542804"
   },
   {
@@ -907,6 +951,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117713273"
   },
   {
@@ -927,6 +972,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117725125"
   },
   {
@@ -947,6 +993,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117644466"
   },
   {
@@ -967,6 +1014,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117729696"
   },
   {
@@ -987,6 +1035,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117598317"
   },
   {
@@ -1007,6 +1056,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117683022"
   },
   {
@@ -1027,6 +1077,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117849414"
   },
   {
@@ -1047,6 +1098,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117678597"
   },
   {
@@ -1067,6 +1119,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117381975"
   },
   {
@@ -1087,6 +1140,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117658719"
   },
   {
@@ -1107,6 +1161,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117623357"
   },
   {
@@ -1127,6 +1182,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117416680"
   },
   {
@@ -1147,6 +1203,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117574548"
   },
   {
@@ -1167,6 +1224,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117624935"
   },
   {
@@ -1187,6 +1245,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117650024"
   },
   {
@@ -1207,6 +1266,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117592252"
   },
   {
@@ -1227,6 +1287,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117563192"
   },
   {
@@ -1247,6 +1308,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117554605"
   },
   {
@@ -1267,6 +1329,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117589964"
   },
   {
@@ -1287,6 +1350,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117570007"
   },
   {
@@ -1307,6 +1371,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117526176"
   },
   {
@@ -1327,6 +1392,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117543981"
   },
   {
@@ -1347,6 +1413,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117519518"
   },
   {
@@ -1367,6 +1434,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117586562"
   },
   {
@@ -1387,6 +1455,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117500568"
   },
   {
@@ -1407,6 +1476,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117444325"
   },
   {
@@ -1427,6 +1497,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117433532"
   },
   {
@@ -1447,6 +1518,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117297015"
   },
   {
@@ -1467,6 +1539,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117203289"
   },
   {
@@ -1487,6 +1560,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117375897"
   },
   {
@@ -1507,6 +1581,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/116983828"
   },
   {
@@ -1527,6 +1602,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117397207"
   },
   {
@@ -1547,6 +1623,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117335991"
   },
   {
@@ -1567,6 +1644,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/113415134"
   },
   {
@@ -1587,6 +1665,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/116984825"
   },
   {
@@ -1607,6 +1686,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117157344"
   },
   {
@@ -1627,6 +1707,7 @@
    "sold_year": null,
    "jump": null,
    "per_year": null,
+   "suburb": null,
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/116477297"
   }
  ],

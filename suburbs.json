@@ -1,0 +1,622 @@
+[
+ {
+  "slug": "adriaanse",
+  "area": "8128",
+  "name": "Adriaanse"
+ },
+ {
+  "slug": "athlone",
+  "area": "8734",
+  "name": "Athlone"
+ },
+ {
+  "slug": "bakoven",
+  "area": "11012",
+  "name": "Bakoven"
+ },
+ {
+  "slug": "bantry-bay",
+  "area": "11013",
+  "name": "Bantry Bay"
+ },
+ {
+  "slug": "belgravia",
+  "area": "8736",
+  "name": "Belgravia"
+ },
+ {
+  "slug": "belhar",
+  "area": "8132",
+  "name": "Belhar"
+ },
+ {
+  "slug": "belthorn-estate",
+  "area": "8783",
+  "name": "Belthorn Estate"
+ },
+ {
+  "slug": "bergvliet",
+  "area": "10189",
+  "name": "Bergvliet"
+ },
+ {
+  "slug": "bishop-lavis",
+  "area": "8121",
+  "name": "Bishop Lavis"
+ },
+ {
+  "slug": "bishopscourt",
+  "area": "8661",
+  "name": "Bishopscourt"
+ },
+ {
+  "slug": "bo-kaap",
+  "area": "9136",
+  "name": "Bo Kaap"
+ },
+ {
+  "slug": "bonteheuwel",
+  "area": "8739",
+  "name": "Bonteheuwel"
+ },
+ {
+  "slug": "bridgetown",
+  "area": "8723",
+  "name": "Bridgetown"
+ },
+ {
+  "slug": "camps-bay",
+  "area": "11014",
+  "name": "Camps Bay"
+ },
+ {
+  "slug": "cape-town-city-centre",
+  "area": "9138",
+  "name": "Cape Town City Centre"
+ },
+ {
+  "slug": "charlesville",
+  "area": "8155",
+  "name": "Charlesville"
+ },
+ {
+  "slug": "claremont",
+  "area": "11741",
+  "name": "Claremont"
+ },
+ {
+  "slug": "claremont-upper",
+  "area": "14225",
+  "name": "Claremont Upper"
+ },
+ {
+  "slug": "clarkes-estate",
+  "area": "8133",
+  "name": "Clarkes Estate"
+ },
+ {
+  "slug": "clifton",
+  "area": "11015",
+  "name": "Clifton"
+ },
+ {
+  "slug": "constantia",
+  "area": "11742",
+  "name": "Constantia"
+ },
+ {
+  "slug": "crawford",
+  "area": "8787",
+  "name": "Crawford"
+ },
+ {
+  "slug": "crossroads",
+  "area": "8741",
+  "name": "Crossroads"
+ },
+ {
+  "slug": "de-waterkant",
+  "area": "9141",
+  "name": "De Waterkant"
+ },
+ {
+  "slug": "diep-river",
+  "area": "10195",
+  "name": "Diep River"
+ },
+ {
+  "slug": "elfindale",
+  "area": "10170",
+  "name": "Elfindale"
+ },
+ {
+  "slug": "fisantekraal",
+  "area": "9529",
+  "name": "Fisantekraal"
+ },
+ {
+  "slug": "foreshore",
+  "area": "9143",
+  "name": "Foreshore"
+ },
+ {
+  "slug": "fresnaye",
+  "area": "11016",
+  "name": "Fresnaye"
+ },
+ {
+  "slug": "frogmore-estate",
+  "area": "10203",
+  "name": "Frogmore Estate"
+ },
+ {
+  "slug": "gardens",
+  "area": "9145",
+  "name": "Gardens"
+ },
+ {
+  "slug": "gatesville",
+  "area": "8746",
+  "name": "Gatesville"
+ },
+ {
+  "slug": "grassy-park",
+  "area": "10204",
+  "name": "Grassy Park"
+ },
+ {
+  "slug": "green-point",
+  "area": "11017",
+  "name": "Green Point"
+ },
+ {
+  "slug": "guguletu",
+  "area": "8696",
+  "name": "Guguletu"
+ },
+ {
+  "slug": "hanover-park",
+  "area": "8790",
+  "name": "Hanover Park"
+ },
+ {
+  "slug": "hatton",
+  "area": "16261",
+  "name": "Hatton"
+ },
+ {
+  "slug": "hazendal",
+  "area": "8717",
+  "name": "Hazendal"
+ },
+ {
+  "slug": "heathfield",
+  "area": "10207",
+  "name": "Heathfield"
+ },
+ {
+  "slug": "heideveld",
+  "area": "8726",
+  "name": "Heideveld"
+ },
+ {
+  "slug": "higgovale",
+  "area": "9149",
+  "name": "Higgovale"
+ },
+ {
+  "slug": "kalk-bay",
+  "area": "9067",
+  "name": "Kalk Bay"
+ },
+ {
+  "slug": "kalksteenfontein",
+  "area": "8753",
+  "name": "Kalksteenfontein"
+ },
+ {
+  "slug": "kenilworth",
+  "area": "8669",
+  "name": "Kenilworth"
+ },
+ {
+  "slug": "kenilworth-upper",
+  "area": "14224",
+  "name": "Kenilworth Upper"
+ },
+ {
+  "slug": "kensington",
+  "area": "8010",
+  "name": "Kensington"
+ },
+ {
+  "slug": "kenwyn",
+  "area": "8792",
+  "name": "Kenwyn"
+ },
+ {
+  "slug": "kewtown",
+  "area": "8754",
+  "name": "Kewtown"
+ },
+ {
+  "slug": "kirstenhof",
+  "area": "10178",
+  "name": "Kirstenhof"
+ },
+ {
+  "slug": "lakeside",
+  "area": "10174",
+  "name": "Lakeside"
+ },
+ {
+  "slug": "langa",
+  "area": "9117",
+  "name": "Langa"
+ },
+ {
+  "slug": "lansdowne",
+  "area": "8778",
+  "name": "Lansdowne"
+ },
+ {
+  "slug": "lavender-hill",
+  "area": "10211",
+  "name": "Lavender Hill"
+ },
+ {
+  "slug": "llandudno",
+  "area": "9118",
+  "name": "Llandudno"
+ },
+ {
+  "slug": "lotus-river",
+  "area": "10212",
+  "name": "Lotus River"
+ },
+ {
+  "slug": "maitland",
+  "area": "9153",
+  "name": "Maitland"
+ },
+ {
+  "slug": "maitland-garden-village",
+  "area": "9119",
+  "name": "Maitland Garden Village"
+ },
+ {
+  "slug": "manenberg",
+  "area": "8718",
+  "name": "Manenberg"
+ },
+ {
+  "slug": "marina-da-gama",
+  "area": "10213",
+  "name": "Marina Da Gama"
+ },
+ {
+  "slug": "matroosfontein",
+  "area": "8154",
+  "name": "Matroosfontein"
+ },
+ {
+  "slug": "meadowridge",
+  "area": "10052",
+  "name": "Meadowridge"
+ },
+ {
+  "slug": "montana",
+  "area": "8165",
+  "name": "Montana"
+ },
+ {
+  "slug": "montevideo",
+  "area": "8157",
+  "name": "Montevideo"
+ },
+ {
+  "slug": "morning-star",
+  "area": "7906",
+  "name": "Morning Star"
+ },
+ {
+  "slug": "mouille-point",
+  "area": "11018",
+  "name": "Mouille Point"
+ },
+ {
+  "slug": "mountview",
+  "area": "8716",
+  "name": "Mountview"
+ },
+ {
+  "slug": "mowbray",
+  "area": "8677",
+  "name": "Mowbray"
+ },
+ {
+  "slug": "muizenberg",
+  "area": "9025",
+  "name": "Muizenberg"
+ },
+ {
+  "slug": "newfields",
+  "area": "8727",
+  "name": "Newfields"
+ },
+ {
+  "slug": "newlands",
+  "area": "8679",
+  "name": "Newlands"
+ },
+ {
+  "slug": "nooitgedacht",
+  "area": "8123",
+  "name": "Nooitgedacht"
+ },
+ {
+  "slug": "nyanga",
+  "area": "9132",
+  "name": "Nyanga"
+ },
+ {
+  "slug": "observatory",
+  "area": "10157",
+  "name": "Observatory"
+ },
+ {
+  "slug": "ocean-view",
+  "area": "9069",
+  "name": "Ocean View"
+ },
+ {
+  "slug": "oranjezicht",
+  "area": "9155",
+  "name": "Oranjezicht"
+ },
+ {
+  "slug": "ottery",
+  "area": "10090",
+  "name": "Ottery"
+ },
+ {
+  "slug": "paarden-eiland",
+  "area": "8025",
+  "name": "Paarden Eiland"
+ },
+ {
+  "slug": "parkwood",
+  "area": "10179",
+  "name": "Parkwood"
+ },
+ {
+  "slug": "pelican-heights",
+  "area": "12195",
+  "name": "Pelican Heights"
+ },
+ {
+  "slug": "pelican-park",
+  "area": "9029",
+  "name": "Pelican Park"
+ },
+ {
+  "slug": "penlyn-estate",
+  "area": "8800",
+  "name": "Penlyn Estate"
+ },
+ {
+  "slug": "philadelphia",
+  "area": "9168",
+  "name": "Philadelphia"
+ },
+ {
+  "slug": "philippi",
+  "area": "8818",
+  "name": "Philippi"
+ },
+ {
+  "slug": "pinati",
+  "area": "8779",
+  "name": "Pinati"
+ },
+ {
+  "slug": "pinelands",
+  "area": "8017",
+  "name": "Pinelands"
+ },
+ {
+  "slug": "plumstead",
+  "area": "10094",
+  "name": "Plumstead"
+ },
+ {
+  "slug": "primrose-park",
+  "area": "8758",
+  "name": "Primrose Park"
+ },
+ {
+  "slug": "retreat",
+  "area": "9034",
+  "name": "Retreat"
+ },
+ {
+  "slug": "riverlands",
+  "area": "33651",
+  "name": "Riverlands"
+ },
+ {
+  "slug": "rondebosch",
+  "area": "8682",
+  "name": "Rondebosch"
+ },
+ {
+  "slug": "rondebosch-east",
+  "area": "8806",
+  "name": "Rondebosch East"
+ },
+ {
+  "slug": "rosebank",
+  "area": "8683",
+  "name": "Rosebank"
+ },
+ {
+  "slug": "rylands",
+  "area": "8730",
+  "name": "Rylands"
+ },
+ {
+  "slug": "salt-river",
+  "area": "10158",
+  "name": "Salt River"
+ },
+ {
+  "slug": "sea-point",
+  "area": "11021",
+  "name": "Sea Point"
+ },
+ {
+  "slug": "seawinds",
+  "area": "10180",
+  "name": "Seawinds"
+ },
+ {
+  "slug": "silvertown",
+  "area": "8731",
+  "name": "Silvertown"
+ },
+ {
+  "slug": "southfield",
+  "area": "10096",
+  "name": "Southfield"
+ },
+ {
+  "slug": "st-james",
+  "area": "9039",
+  "name": "St James"
+ },
+ {
+  "slug": "steenberg",
+  "area": "9040",
+  "name": "Steenberg"
+ },
+ {
+  "slug": "surrey-estate",
+  "area": "8762",
+  "name": "Surrey Estate"
+ },
+ {
+  "slug": "sybrand-park",
+  "area": "8686",
+  "name": "Sybrand Park"
+ },
+ {
+  "slug": "tamboerskloof",
+  "area": "9163",
+  "name": "Tamboerskloof"
+ },
+ {
+  "slug": "thornton",
+  "area": "8112",
+  "name": "Thornton"
+ },
+ {
+  "slug": "three-anchor-bay",
+  "area": "11022",
+  "name": "Three Anchor Bay"
+ },
+ {
+  "slug": "tokai",
+  "area": "9044",
+  "name": "Tokai"
+ },
+ {
+  "slug": "university-estate",
+  "area": "10161",
+  "name": "University Estate"
+ },
+ {
+  "slug": "valhalla-park",
+  "area": "8127",
+  "name": "Valhalla Park"
+ },
+ {
+  "slug": "vanguard",
+  "area": "8766",
+  "name": "Vanguard"
+ },
+ {
+  "slug": "vredehoek",
+  "area": "9166",
+  "name": "Vredehoek"
+ },
+ {
+  "slug": "vrygrond",
+  "area": "16635",
+  "name": "Vrygrond"
+ },
+ {
+  "slug": "walmer-estate",
+  "area": "10163",
+  "name": "Walmer Estate"
+ },
+ {
+  "slug": "waterfront",
+  "area": "9169",
+  "name": "Waterfront"
+ },
+ {
+  "slug": "welcome",
+  "area": "8771",
+  "name": "Welcome"
+ },
+ {
+  "slug": "westlake",
+  "area": "11740",
+  "name": "Westlake"
+ },
+ {
+  "slug": "wetton",
+  "area": "8812",
+  "name": "Wetton"
+ },
+ {
+  "slug": "windermere",
+  "area": "8019",
+  "name": "Windermere"
+ },
+ {
+  "slug": "woodstock",
+  "area": "10164",
+  "name": "Woodstock"
+ },
+ {
+  "slug": "world-view",
+  "area": "16875",
+  "name": "World View"
+ },
+ {
+  "slug": "wynberg",
+  "area": "10109",
+  "name": "Wynberg"
+ },
+ {
+  "slug": "wynberg-upper",
+  "area": "10102",
+  "name": "Wynberg Upper"
+ },
+ {
+  "slug": "zandvlei",
+  "area": "9036",
+  "name": "Zandvlei"
+ },
+ {
+  "slug": "zeekoevlei",
+  "area": "9047",
+  "name": "Zeekoevlei"
+ },
+ {
+  "slug": "zonnebloem",
+  "area": "10166",
+  "name": "Zonnebloem"
+ }
+]

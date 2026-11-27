@@ -19,10 +19,11 @@ from pathlib import Path
 HERE = Path(__file__).parent
 CACHE = HERE / "cache"
 
-# (p24 area id, suburb slug, display name). Add a line per suburb.
-SUBURBS = [
-    ("8682", "rondebosch", "Rondebosch"),
-]
+# (area id, slug, display name) -- every Cape Town suburb, from suburbs.json
+# Rondebosch first: the flagship suburb always refreshes even on a short crawl budget
+_SUBS = json.loads((HERE / "suburbs.json").read_text())
+SUBURBS = [(s["area"], s["slug"], s["name"])
+           for s in sorted(_SUBS, key=lambda s: (s["slug"] != "rondebosch", s["slug"]))]
 
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120 Safari/537.36")
@@ -83,10 +84,14 @@ def parse_search(page, suburb):
             continue
         addr = re.search(r'class="p24_address">\s*([^<]*)', blk)
         img = re.search(r'(https://images\.prop24\.com/\d+/Crop\d+x\d+)', blk)
+        title = re.search(r'class="p24_title[^"]*"[^>]*>\s*([^<]*)', blk) or \
+                re.search(r'itemprop="name" content="([^"]*)"', blk)
+        title = H.unescape(title.group(1)).strip() if title else ""
+        kind = re.sub(r"^\d+ Bedroom ", "", title).split(" for sale")[0].strip() or "Property"
         out.append({
             "id": key.lstrip("P"), "price": price,
             "address": H.unescape(addr.group(1)).strip() if addr else None,
-            "suburb": suburb,
+            "suburb": suburb, "kind": kind, "title": title,
             "image": img.group(1) if img else None,
             "beds": _icon(blk, "Bedrooms"), "baths": _icon(blk, "Bathrooms"),
             "parking": _icon(blk, "Parking Spaces"),
@@ -114,27 +119,47 @@ def parse_detail(page, listing):
     return listing
 
 
-def scrape():
-    listings = {}
+def scrape(budget=150, deep=False):
+    """Stops after `budget` network fetches -- Property24 503s an IP around 90 anyway.
+    Cached pages do not count, so each run picks up where the last one stopped."""
+    budget = [budget]
+    raw_get = get
+
+    def counted(url, name):
+        if (CACHE / name).exists() and (CACHE / name).stat().st_size > 5000:
+            return raw_get(url, name)                  # cache hit, free
+        if budget[0] <= 0:
+            return None
+        budget[0] -= 1
+        return raw_get(url, name)
+
+    listings = {}                                      # start from what we already have: runs accumulate
+    if (HERE / "listings.json").exists():
+        listings = {l["id"]: l for l in json.loads((HERE / "listings.json").read_text())["listings"]}
     for area, slug, name in SUBURBS:
         base = f"https://www.property24.com/for-sale/{slug}/cape-town/western-cape/{area}"
-        page1 = get(base, f"{slug}_p1.html")
+        page1 = counted(base, f"{slug}_p1.html")
         if not page1:
-            print(f"! {name}: blocked before we started")
-            continue
+            print(f"! {name}: blocked, stopping")
+            break
+        print(f"  {name}")
         total = int(re.search(r'p24_bold">(\d+)</span><span>results', page1).group(1)) if re.search(
             r'p24_bold">(\d+)</span><span>results', page1) else 1
-        pages = [page1] + [get(f"{base}/p{n}", f"{slug}_p{n}.html") for n in range(2, 2 + (total // 22))]
+        pages = [page1] + [counted(f"{base}/p{n}", f"{slug}_p{n}.html")
+                           for n in range(2, 2 + (total // 22))]
         for page in filter(None, pages):
             for l in parse_search(page, name):
                 listings.setdefault(l["id"], l)
     missing = [l for l in listings.values() if not l["address"]]
-    print(f"{len(listings)} listings, {len(missing)} need a detail page")
-    for l in missing:
-        page = get(f"https://www.property24.com/for-sale/{SUBURBS[0][1]}/cape-town/western-cape/"
-                   f"{SUBURBS[0][0]}/{l['id']}", f"detail_{l['id']}.html")
-        if page:
-            parse_detail(page, l)
+    print(f"{len(listings)} listings, {len(missing)} without a street address")
+    if deep:                                           # addresses are only needed for the sold join
+        for l in missing:
+            if budget[0] <= 0:
+                break
+            page = counted(f"https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/"
+                           f"{l['id']}", f"detail_{l['id']}.html")
+            if page:
+                parse_detail(page, l)
     out = HERE / "listings.json"
     out.write_text(json.dumps({"generated": time.strftime("%Y-%m-%d"),
                                "listings": list(listings.values())}, indent=1))
@@ -144,4 +169,5 @@ def scrape():
 
 if __name__ == "__main__":
     CACHE.mkdir(exist_ok=True)
-    scrape()
+    scrape(budget=int(next((a.split("=")[1] for a in sys.argv if a.startswith("--budget=")), 150)),
+           deep="--deep" in sys.argv)

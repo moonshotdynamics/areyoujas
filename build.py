@@ -59,6 +59,7 @@ def main():
             card["jump"] = round(100 * (l["price"] - s["price"]) / s["price"])
             held = max(1, year_now - s["year"])
             card["per_year"] = round(card["jump"] / held)
+        card["suburb"] = l.get("suburb") or None
         card["url"] = ("https://www.property24.com/for-sale/%s/cape-town/western-cape/%s/%s"
                        % (l.get("slug", "rondebosch"), "8682", l["id"]))
         cards.append(card)
@@ -67,7 +68,7 @@ def main():
     stats = {
         "listings": len(cards),
         "matched": len(matched),
-        "suburb": "Rondebosch",
+        "suburbs": len({c.get("suburb") or "Unknown" for c in cards}),
         "biggest_jump": max((c["jump"] for c in matched), default=None),
         "median_ask": sorted(c["price"] for c in cards)[len(cards) // 2] if cards else None,
     }

@@ -23,6 +23,8 @@
   input[type=search],select{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:15px}
   input[type=search]{flex:1;min-width:200px}
   label.chk{display:flex;gap:8px;align-items:center;color:var(--dim);font-size:14px;cursor:pointer}
+  #reset{background:var(--card);color:var(--dim);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;font-size:14px}
+  #reset:hover{color:var(--ink);border-color:var(--lime)}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding:0 0 40px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
   .card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#0a0f19}
@@ -62,19 +64,28 @@
   </header>
 
   <div class="bar">
-    <input type="search" id="q" placeholder="Search street, e.g. Rouwkoop">
+    <input type="search" id="q" placeholder="Search street or suburb">
+    <select id="f-suburb"><option value="">All suburbs</option></select>
+    <select id="f-kind"><option value="">All types</option></select>
+    <select id="f-beds"><option value="">Any beds</option></select>
+    <select id="f-baths"><option value="">Any baths</option></select>
+    <input type="number" id="f-min" placeholder="Min R" step="100000" min="0" style="width:120px">
+    <input type="number" id="f-max" placeholder="Max R" step="100000" min="0" style="width:120px">
     <select id="sort">
       <option value="jump">Biggest jump first</option>
       <option value="price">Price: high to low</option>
       <option value="cheap">Price: low to high</option>
+      <option value="beds">Most bedrooms</option>
       <option value="new">Newest listings</option>
     </select>
     <label class="chk"><input type="checkbox" id="onlySold"> Only with a sold price</label>
+    <button id="reset" title="Clear filters">Clear</button>
   </div>
+  <p class="lede" id="count"></p>
 
   <div class="grid" id="grid"></div>
 
-  <h2 id="soldTitle">What actually sold</h2>
+  <h2 id="soldTitle">What actually sold (Rondebosch)</h2>
   <p class="lede" id="soldLede"></p>
   <div class="scroll"><table id="soldTable"></table></div>
 
@@ -126,6 +137,7 @@ function renderStats(){
   const el = document.getElementById("stats");
   el.innerHTML = `
     <div class="stat"><b>${s.listings}</b><small>listings tracked</small></div>
+    <div class="stat"><b>${s.suburbs ?? 1}</b><small>suburbs</small></div>
     <div class="stat"><b>${s.matched}</b><small>with a known last sale</small></div>
     <div class="stat"><b>${s.biggest_jump == null ? "—" : "+" + s.biggest_jump + "%"}</b><small>biggest jump</small></div>
     <div class="stat"><b>${mil(s.median_ask)}</b><small>median asking</small></div>`;
@@ -153,24 +165,47 @@ function card(c){
     </div></div>`;
 }
 
+function fillFilters(){
+  const uniq = (k, min) => [...new Set(DATA.listings.map(c => c[k]).filter(v => v != null))]
+        .sort((a, b) => (min ? a - b : String(a).localeCompare(String(b))));
+  const opt = v => `<option value="${v}">${v}</option>`;
+  document.getElementById("f-suburb").innerHTML += uniq("suburb").map(opt).join("");
+  document.getElementById("f-kind").innerHTML   += uniq("kind").map(opt).join("");
+  document.getElementById("f-beds").innerHTML   += uniq("beds", true).map(v => `<option value="${v}">${v}+ bed</option>`).join("");
+  document.getElementById("f-baths").innerHTML  += uniq("baths", true).map(v => `<option value="${v}">${v}+ bath</option>`).join("");
+}
+
+const val = id => document.getElementById(id).value;
+const num = id => { const v = parseInt(val(id), 10); return isNaN(v) ? null : v; };
+
 function render(){
-  const q = state.q.toLowerCase();
-  let rows = DATA.listings.filter(c =>
+  const q = (state.q || "").toLowerCase();
+  const beds = num("f-beds"), baths = num("f-baths"), min = num("f-min"), max = num("f-max");
+  const rows = DATA.listings.filter(c =>
       (!q || (c.address || "").toLowerCase().includes(q) || (c.suburb || "").toLowerCase().includes(q)) &&
+      (!val("f-suburb") || c.suburb === val("f-suburb")) &&
+      (!val("f-kind") || c.kind === val("f-kind")) &&
+      (beds == null || (c.beds || 0) >= beds) &&
+      (baths == null || (c.baths || 0) >= baths) &&
+      (min == null || c.price >= min) &&
+      (max == null || c.price <= max) &&
       (!state.onlySold || c.sold));
   const s = state.sort;
   rows.sort((a,b) => s === "jump" ? (b.jump ?? -999) - (a.jump ?? -999)
                   : s === "price" ? b.price - a.price
+                  : s === "beds" ? (b.beds ?? 0) - (a.beds ?? 0)
                   : s === "cheap" ? a.price - b.price
                   : (b.id > a.id ? 1 : -1));
+  document.getElementById("count").textContent =
+    `${rows.length} of ${DATA.listings.length} listings`;
   const g = document.getElementById("grid");
-  g.innerHTML = rows.length ? rows.map(card).join("") : `<p class="empty">Nothing matches.</p>`;
+  g.innerHTML = rows.length ? rows.map(card).join("") : `<p class="empty">Nothing matches those filters.</p>`;
 }
 
 function renderSold(){
   const rows = DATA.sold.slice(0, 60);
   document.getElementById("soldLede").textContent =
-    `Rondebosch, ${rows[0]?.year ?? ""} — ${DATA.sold.length} recorded transfers, highest first. This is the number an asking price has to beat.`;
+    `${DATA.sold.length} recorded transfers, highest first. This is the number an asking price has to beat.`;
   document.getElementById("soldTable").innerHTML =
     `<thead><tr><th>Address</th><th>Size</th><th class="num">Sold for</th><th class="num">R/m²</th></tr></thead><tbody>` +
     rows.map(r => `<tr><td>${r.address}</td><td>${r.size ? r.size + " m²" : "—"}</td>
@@ -180,7 +215,17 @@ function renderSold(){
 
 Promise.all([fetch("data.json").then(r => r.json()),
              fetch("/api/reacts").then(r => r.json()).catch(() => ({}))]).then(([d, reacts]) => {
-  DATA = d; REACTS = reacts || {}; renderStats(); render(); renderSold(); wireReacts();
+  DATA = d; REACTS = reacts || {}; renderStats(); fillFilters(); render(); renderSold(); wireReacts();
+  ["f-suburb","f-kind","f-beds","f-baths","f-min","f-max"].forEach(id => {
+    const el = document.getElementById(id);
+    el.oninput = el.onchange = render;
+  });
+  document.getElementById("reset").onclick = () => {
+    ["f-suburb","f-kind","f-beds","f-baths","f-min","f-max"].forEach(id => document.getElementById(id).value = "");
+    document.getElementById("q").value = "";
+    document.getElementById("onlySold").checked = false;
+    state.q = ""; state.onlySold = false; render();
+  };
   document.getElementById("stamp").textContent = "Data refreshed " + d.generated + ".";
   document.getElementById("q").oninput = e => { state.q = e.target.value; render(); };
   document.getElementById("sort").onchange = e => { state.sort = e.target.value; render(); };
