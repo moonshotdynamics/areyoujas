@@ -25,7 +25,8 @@ const cards = (grid.match(/class="card"/g) || []).length;
 const listed = JSON.parse(data);
 
 if (!cards) throw new Error("no cards rendered");
-if (cards !== listed.listings.length) throw new Error(`rendered ${cards} cards, data has ${listed.listings.length}`);
+// the grid opens on sold-price pairs only
+if (cards !== listed.stats.matched) throw new Error(`rendered ${cards} cards, ${listed.stats.matched} have a sold price`);
 if (!/9 Rouwkoop Road/.test(grid)) throw new Error("hero property missing");
 if (!/\+173%/.test(grid)) throw new Error("jump badge missing");
 if (!els["s-listings"].textContent) throw new Error("hero stats empty");

@@ -197,7 +197,7 @@
       <option value="beds">Bedrooms</option>
       <option value="new">Newest</option>
     </select>
-    <label class="chk"><input type="checkbox" id="onlySold"> Sold price known</label>
+    <label class="chk"><input type="checkbox" id="onlySold" checked> Sold price known</label>
     <button id="reset">Clear</button>
   </div>
   <p id="count"></p>
@@ -228,8 +228,8 @@ const rand = n => "R" + Math.round(n).toLocaleString("en-ZA").replace(/,/g, " ")
 const mil  = n => "R" + (n/1e6).toFixed(n >= 1e7 ? 1 : 2).replace(/\.0+$/, "").replace(".", ",") + "m";
 const jumpClass = j => j == null ? "none" : j > 0 ? "up" : j < 0 ? "down" : "none";
 
-// sorted by jump by default, so the paired listings float to the top; tick the box to hide the rest
-let DATA = null, REACTS = {}, state = {q:"", sort:"jump", onlySold:false};
+// opens on the pairs: a listing with no sold price is half the joke
+let DATA = null, REACTS = {}, state = {q:"", sort:"jump", onlySold:true};
 const voted = k => (localStorage.getItem(k) || "").split(",").filter(Boolean);
 const n = (id, kind) => (REACTS[id] || {})[kind] || 0;
 
@@ -427,7 +427,9 @@ function render(){
                   : s === "beds" ? (b.beds ?? 0) - (a.beds ?? 0)
                   : s === "cheap" ? a.price - b.price
                   : (b.id > a.id ? 1 : -1));
-  document.getElementById("count").textContent = `${rows.length} of ${DATA.listings.length} listings`;
+  document.getElementById("count").textContent = state.onlySold
+    ? `${rows.length} of ${DATA.listings.length} listings have a sold price · untick to see the rest`
+    : `${rows.length} of ${DATA.listings.length} listings`;
   document.getElementById("grid").innerHTML =
     rows.length ? rows.map(card).join("")
       : `<p class="empty">${state.onlySold
