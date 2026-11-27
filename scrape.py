@@ -119,7 +119,7 @@ def parse_detail(page, listing):
     return listing
 
 
-def scrape(budget=150, deep=False):
+def scrape(budget=150, deep=0):
     """Stops after `budget` network fetches -- Property24 503s an IP around 90 anyway.
     Cached pages do not count, so each run picks up where the last one stopped."""
     budget = [budget]
@@ -153,13 +153,21 @@ def scrape(budget=150, deep=False):
     missing = [l for l in listings.values() if not l["address"]]
     print(f"{len(listings)} listings, {len(missing)} without a street address")
     if deep:                                           # addresses are only needed for the sold join
+        subs = {s["name"]: (s["slug"], s["area"]) for s in
+                json.loads((HERE / "suburbs.json").read_text())}
+        done = 0
         for l in missing:
-            if budget[0] <= 0:
+            if done >= deep:
                 break
-            page = counted(f"https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/"
-                           f"{l['id']}", f"detail_{l['id']}.html")
+            slug, area = subs.get(l.get("suburb"), (None, None))
+            if not slug:                               # no suburb, no URL: skip rather than guess
+                continue
+            page = counted(f"https://www.property24.com/for-sale/{slug}/cape-town/western-cape/"
+                           f"{area}/{l['id']}", f"detail_{l['id']}.html")
             if page:
                 parse_detail(page, l)
+                done += 1
+        print(f"addressed {done} listings (budget {deep})")
     out = HERE / "listings.json"
     out.write_text(json.dumps({"generated": time.strftime("%Y-%m-%d"),
                                "listings": list(listings.values())}, indent=1))
@@ -170,4 +178,4 @@ def scrape(budget=150, deep=False):
 if __name__ == "__main__":
     CACHE.mkdir(exist_ok=True)
     scrape(budget=int(next((a.split("=")[1] for a in sys.argv if a.startswith("--budget=")), 150)),
-           deep="--deep" in sys.argv)
+           deep=int(next((a.split("=")[1] for a in sys.argv if a.startswith("--deep=")), 0)))
