@@ -21,6 +21,26 @@ SOLD = HERE / "sold.json"
 AREA, SUBURB = "8682", "rondebosch"
 
 
+# Property24 throttles an IP near 90 fetches: cap a run, and remember the addresses that
+# have no sale on record so each night starts where the last one stopped instead of again.
+COUNT = [0]
+BUDGET = [80]
+BLOCKED = [False]                                  # a 503 is not "no sale on record"
+
+
+def _get(url, name):
+    f = CACHE / name
+    if f.exists() and f.stat().st_size > 5000:
+        return get(url, name)                       # cached: free
+    if COUNT[0] >= BUDGET[0]:
+        return None
+    COUNT[0] += 1
+    html = get(url, name)
+    if html is None:                               # fetch failed: throttled, not empty
+        BLOCKED[0] = True
+    return html
+
+
 def norm(address):
     return re.sub(r"[^A-Z0-9 ]", "", (address or "").upper()).strip()
 
@@ -35,18 +55,23 @@ def parse_address(addr):
     return m.group(1).lower(), street
 
 
-def street_map(street_slug):
+def street_map(street_slug, slug=SUBURB, area=AREA):
     """{'9-rouwkoop-road': [hash, ...]} from one or more pages of the street's values list."""
     slugs, page = {}, 1
     while True:
         url = (f"https://www.property24.com/property-values/{street_slug}/"
-               f"{SUBURB}/cape-town/western-cape/{AREA}" + (f"/p{page}" if page > 1 else ""))
-        html = get(url, f"street_{street_slug}_p{page}.html")
+               f"{slug}/cape-town/western-cape/{area}" + (f"/p{page}" if page > 1 else ""))
+        name = f"street_{slug}_{street_slug}_p{page}.html"
+        if not (CACHE / name).exists():            # pages cached before suburbs were per-address
+            old = CACHE / f"street_{street_slug}_p{page}.html"
+            if old.exists():
+                (CACHE / name).write_text(old.read_text(errors="replace"))
+        html = _get(url, name)
         if not html:
             break
         # /property-values/9-rouwkoop-road/rondebosch/cape-town/western-cape/<hash>
         found = re.findall(rf"/property-values/(\d+[a-z]?-{re.escape(street_slug)})/"
-                           rf"{SUBURB}/cape-town/western-cape/([0-9a-z]{{20,}})", html)
+                           rf"{re.escape(slug)}/cape-town/western-cape/([0-9a-z]{{20,}})", html)
         new = {}
         for key, h in found:
             new.setdefault(key, [])
@@ -61,13 +86,13 @@ def street_map(street_slug):
     return slugs
 
 
-def lookup(num, street_slug, slugs):
+def lookup(num, street_slug, slugs, slug=SUBURB, area=AREA):
     """Decode the values page(s) for one address; prefer the first page with a sale."""
     candidates = slugs.get(f"{num}-{street_slug}", [])
     for h in candidates:
         url = (f"https://www.property24.com/property-values/{num}-{street_slug}/"
-               f"{SUBURB}/cape-town/western-cape/{h}")
-        html = get(url, f"values_{num}-{street_slug}_{h[:12]}.html")
+               f"{slug}/cape-town/western-cape/{h}")
+        html = _get(url, f"values_{slug}_{num}-{street_slug}_{h[:12]}.html")
         if not html:
             continue
         r = ocr.read(html)
@@ -85,32 +110,51 @@ def lookup(num, street_slug, slugs):
     return None
 
 
-def crawl():
+def crawl(budget=80):
+    """Look up the deeds sold price for every address we hold. Suburb-aware: the values
+    URL carries the listing's own suburb, which is the difference between a hit and a
+    wasted request."""
+    BUDGET[0] = budget
     data = json.loads((HERE / "listings.json").read_text())
-    jobs = []                                  # (address, num, street_slug)
-    for l in data["listings"]:
-        parsed = parse_address(l.get("address"))
-        if parsed:
-            jobs.append((l["address"], parsed[0], parsed[1]))
+    subs = {s["name"]: (s["slug"], s["area"]) for s in
+            json.loads((HERE / "suburbs.json").read_text())}
     sold = json.loads(SOLD.read_text()) if SOLD.exists() else {}
     have = {norm(k) for k in sold}
+    missf = HERE / "sold_misses.json"          # addresses with no sale on record
+    misses = set(json.loads(missf.read_text())) if missf.exists() else set()
 
-    by_street = {}
-    for addr, num, street in jobs:
-        by_street.setdefault(street, []).append((num, addr))
+    jobs = {}
+    for l in data["listings"]:
+        parsed = parse_address(l.get("address"))
+        if not parsed or l.get("suburb") not in subs:
+            continue
+        if norm(l["address"]) in have or norm(l["address"]) in misses:
+            continue
+        slug, area = subs[l["suburb"]]
+        jobs.setdefault((slug, area, parsed[1]), []).append((parsed[0], l["address"], l["suburb"]))
 
-    for street, items in sorted(by_street.items()):
-        slugs = street_map(street)
-        for num, addr in sorted(items):
-            if norm(addr) in have:
-                continue
-            hit = lookup(num, street, slugs)
+    for (slug, area, street), items in sorted(jobs.items()):
+        if COUNT[0] >= budget:
+            break
+        slugs = street_map(street, slug, area)
+        for num, addr, suburb in sorted(items):
+            if COUNT[0] >= budget:
+                break
+            hit = lookup(num, street, slugs, slug, area)
             if hit:
+                hit["suburb"] = suburb
                 sold[addr] = hit
                 have.add(norm(addr))
-                print(f"  {addr}: R{hit['price']:,} ({hit['year']})")
+                print(f"  {addr} ({suburb}): R{hit['price']:,} ({hit['year']})")
+            elif not BLOCKED[0]:
+                misses.add(norm(addr))             # page loaded, no sale: safe to skip for good
         SOLD.write_text(json.dumps(sold, indent=1, sort_keys=True))
-    print(f"{len(sold)} addresses with a sold price -> sold.json")
+        if not BLOCKED[0]:
+            missf.write_text(json.dumps(sorted(misses), indent=1))
+        if BLOCKED[0]:
+            print("  503 - stopping; nothing marked as 'no sale'")
+            break
+    print(f"{COUNT[0]} fetches | {len(sold)} addresses with a sold price -> sold.json")
 
 
 def check():
@@ -134,4 +178,4 @@ if __name__ == "__main__":
     if "--check" in sys.argv:
         check()
     else:
-        crawl()
+        crawl(int(next((a.split("=")[1] for a in sys.argv if a.startswith("--budget=")), 80)))

@@ -4,9 +4,9 @@
 set -u
 cd "$(dirname "$0")"
 
-python scrape.py --budget=90 --deep=60 || echo "scrape: partial"   # addresses first; P24 blocks an IP near 90 fetches
+python sold.py --budget=80 || echo "sold: partial"     # the prize: deeds sold price per address, first in the queue
+python scrape.py --budget=90 --deep=60 || echo "scrape: partial"   # addresses next; P24 blocks an IP near 90 fetches
 python galleries.py 40 || echo "galleries: partial"   # photo galleries, budgeted; aborts on 503 and resumes from cache
-python sold.py   || echo "sold: partial"
 python build.py  || exit 1
 
 # ponytail: last-write-wins on data files; fine while one crawler exists,
