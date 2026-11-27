@@ -119,6 +119,28 @@ def parse_detail(page, listing):
     return listing
 
 
+def deep_pass(listings, deep, counted):
+    """Street addresses are the join key for deeds sold prices, so they get the budget
+    FIRST: by the end of a run the IP is usually throttled and this is the work that matters."""
+    subs = {s["name"]: (s["slug"], s["area"]) for s in
+            json.loads((HERE / "suburbs.json").read_text())}
+    done = 0
+    for l in listings.values():
+        if done >= deep or l.get("address"):
+            continue
+        slug, area = subs.get(l.get("suburb"), (None, None))
+        if not slug:                                   # no suburb, no URL: skip rather than guess
+            continue
+        page = counted(f"https://www.property24.com/for-sale/{slug}/cape-town/western-cape/"
+                       f"{area}/{l['id']}", f"detail_{l['id']}.html")
+        if page is None:                               # throttled: stop, keep what we have
+            break
+        parse_detail(page, l)
+        done += 1
+    print(f"addressed {done} listings (budget {deep})")
+    return done
+
+
 def scrape(budget=150, deep=0):
     """Stops after `budget` network fetches -- Property24 503s an IP around 90 anyway.
     Cached pages do not count, so each run picks up where the last one stopped."""
@@ -136,6 +158,9 @@ def scrape(budget=150, deep=0):
     listings = {}                                      # start from what we already have: runs accumulate
     if (HERE / "listings.json").exists():
         listings = {l["id"]: l for l in json.loads((HERE / "listings.json").read_text())["listings"]}
+    if deep and listings:
+        deep_pass(listings, deep, counted)
+
     for area, slug, name in SUBURBS:
         base = f"https://www.property24.com/for-sale/{slug}/cape-town/western-cape/{area}"
         page1 = counted(base, f"{slug}_p1.html")
@@ -152,22 +177,6 @@ def scrape(budget=150, deep=0):
                 listings.setdefault(l["id"], {}).update(l)   # re-crawls refresh fields
     missing = [l for l in listings.values() if not l["address"]]
     print(f"{len(listings)} listings, {len(missing)} without a street address")
-    if deep:                                           # addresses are only needed for the sold join
-        subs = {s["name"]: (s["slug"], s["area"]) for s in
-                json.loads((HERE / "suburbs.json").read_text())}
-        done = 0
-        for l in missing:
-            if done >= deep:
-                break
-            slug, area = subs.get(l.get("suburb"), (None, None))
-            if not slug:                               # no suburb, no URL: skip rather than guess
-                continue
-            page = counted(f"https://www.property24.com/for-sale/{slug}/cape-town/western-cape/"
-                           f"{area}/{l['id']}", f"detail_{l['id']}.html")
-            if page:
-                parse_detail(page, l)
-                done += 1
-        print(f"addressed {done} listings (budget {deep})")
     out = HERE / "listings.json"
     out.write_text(json.dumps({"generated": time.strftime("%Y-%m-%d"),
                                "listings": list(listings.values())}, indent=1))

@@ -4,7 +4,7 @@
 set -u
 cd "$(dirname "$0")"
 
-python scrape.py --deep=60 || echo "scrape: partial"   # --deep fetches street addresses: no address, no sold join
+python scrape.py --budget=90 --deep=60 || echo "scrape: partial"   # addresses first; P24 blocks an IP near 90 fetches
 python galleries.py 40 || echo "galleries: partial"   # photo galleries, budgeted; aborts on 503 and resumes from cache
 python sold.py   || echo "sold: partial"
 python build.py  || exit 1
