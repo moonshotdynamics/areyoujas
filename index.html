@@ -51,6 +51,12 @@
   .reacts button{font-size:12px;padding:4px 8px;border-color:var(--line);background:transparent;color:var(--muted)}
   .reacts button:hover{color:var(--ink);border-color:var(--line-strong)}
   .reacts button[disabled]{opacity:.5;cursor:default}
+  /* the one comic element: "jas" leans, because the number does too */
+  .reacts button[data-kind="jas"]{transform:rotate(-7deg) skewX(-8deg);font-size:12.5px}
+  .reacts button[data-kind="jas"]:hover{transform:rotate(-7deg) skewX(-8deg) scale(1.07);color:var(--ink)}
+  .reacts button[data-kind="jas"]:active{transform:rotate(-3deg) skewX(-4deg) scale(.98)}
+  .reacts button[data-kind="yoh"]:hover{transform:translateX(-1px)}
+  .reacts button[data-kind="yoh"]:active{transform:translateX(2px)}
   .card a.p24{font-size:12px;color:var(--muted);margin-top:8px}
 
   h2{font-size:18px;font-weight:600;margin:40px 0 6px}
@@ -158,9 +164,9 @@ function card(c){
       <div class="price">${rand(c.price)}</div>
       ${sold}
       <div class="reacts" data-id="${c.id}">
-        <button data-kind="jas" aria-label="Jas"><span>${n(c.id,"jas")}</span> jas</button>
-        <button data-kind="yoh" aria-label="Yoh"><span>${n(c.id,"yoh")}</span> yoh</button>
-        <button data-kind="lol" aria-label="Laughing"><span>${n(c.id,"lol")}</span> lol</button>
+        <button data-kind="jas" aria-label="Jas"><span>🤪 ${n(c.id,"jas")}</span> jas</button>
+        <button data-kind="yoh" aria-label="Yoh"><span>😮‍💨 ${n(c.id,"yoh")}</span> yoh</button>
+        <button data-kind="lol" aria-label="Laughing"><span>😂 ${n(c.id,"lol")}</span> lol</button>
       </div>
       <a class="p24" href="${c.url}" target="_blank" rel="noopener">Property24 listing</a>
     </div></div>`;
