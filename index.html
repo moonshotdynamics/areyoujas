@@ -153,7 +153,7 @@ function renderStats(){
 
 function card(c){
   const sold = c.sold
-    ? `<div class="sold"><span>Last sold <b>${mil(c.sold)}</b>${c.sold_year ? " in " + c.sold_year : ""}</span>
+    ? `<div class="sold"><span>Last sold <b>${mil(c.sold)}</b>${c.sold_year ? " in " + c.sold_year : ""}${c.sold_source && c.sold_source !== "property24 deeds" ? " · agency-reported" : ""}</span>
          <span class="jump ${jumpClass(c.jump)}">${c.jump > 0 ? "+" : ""}${c.jump}%</span></div>`
     : `<div class="sold"><span>Last sold price not on record</span><span class="jump none"></span></div>`;
   return `<div class="card">
@@ -208,12 +208,13 @@ function render(){
 }
 
 function renderSold(){
-  const rows = DATA.sold.slice(0, 80);
-  document.getElementById("soldLede").textContent = `${DATA.sold.length} recorded transfers, highest first.`;
+  const rows = DATA.sold;
+  document.getElementById("soldLede").textContent =
+    `${rows.length} recorded Cape Town sales, highest first, from deeds records and agency sold listings.`;
   document.getElementById("soldTable").innerHTML =
-    `<thead><tr><th>Address</th><th>Size</th><th class="num">Sold for</th><th class="num">R/m²</th></tr></thead><tbody>` +
-    rows.map(r => `<tr><td>${r.address}</td><td>${r.size ? r.size + " m²" : ""}</td>
-      <td class="num">${rand(r.price)}</td><td class="num">${Math.round(r.price / (r.size || 1)).toLocaleString("en-ZA")}</td></tr>`).join("") +
+    `<thead><tr><th>Address</th><th>Suburb</th><th class="num">Sold for</th><th class="num">R/m²</th></tr></thead><tbody>` +
+    rows.map(r => `<tr><td>${r.address}</td><td>${r.suburb || ""}</td>
+      <td class="num">${rand(r.price)}</td><td class="num">${r.size ? Math.round(r.price / r.size).toLocaleString("en-ZA") : ""}</td></tr>`).join("") +
     `</tbody>`;
 }
 

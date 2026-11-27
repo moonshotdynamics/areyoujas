@@ -27641,24 +27641,28 @@
    "address": "BANTRY BAY|196 KLOOF ROAD",
    "price": 138000000,
    "year": null,
+   "suburb": "Bantry Bay",
    "source": "greeff sold"
   },
   {
    "address": "CONSTANTIA|17 OU WINGERD ROAD",
    "price": 42000000,
    "year": null,
+   "suburb": "Constantia",
    "source": "greeff sold"
   },
   {
    "address": "CONSTANTIA|16A BORDEAUX AVENUE",
    "price": 29950000,
    "year": null,
+   "suburb": "Constantia",
    "source": "greeff sold"
   },
   {
    "address": "CONSTANTIA|2 GLEN AVENUE",
    "price": 29950000,
    "year": null,
+   "suburb": "Constantia",
    "source": "greeff sold"
   },
   {
@@ -27666,6 +27670,7 @@
    "price": 19000000,
    "year": 2025,
    "size": 1130,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27673,6 +27678,7 @@
    "price": 19000000,
    "year": 2025,
    "size": 1729,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27680,6 +27686,7 @@
    "price": 18300000,
    "year": 2025,
    "size": 1555,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27687,6 +27694,7 @@
    "price": 18250000,
    "year": 2025,
    "size": 1048,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27694,6 +27702,7 @@
    "price": 17550000,
    "year": 2025,
    "size": 3333,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27701,6 +27710,7 @@
    "price": 17500000,
    "year": 2025,
    "size": 1920,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27708,12 +27718,14 @@
    "price": 15500000,
    "year": 2025,
    "size": 1572,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
    "address": "BISHOPSCOURT|2 CANNERY ROW",
    "price": 14995000,
    "year": null,
+   "suburb": "Bishopscourt",
    "source": "greeff sold"
   },
   {
@@ -27721,6 +27733,7 @@
    "price": 14600000,
    "year": 2025,
    "size": 1929,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27728,6 +27741,7 @@
    "price": 13700000,
    "year": 2025,
    "size": 1519,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27735,6 +27749,7 @@
    "price": 13500000,
    "year": 2025,
    "size": 1542,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27742,6 +27757,7 @@
    "price": 12995000,
    "year": 2025,
    "size": 373,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27749,6 +27765,7 @@
    "price": 12250000,
    "year": 2025,
    "size": 1496,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27756,6 +27773,7 @@
    "price": 11650000,
    "year": 2025,
    "size": 857,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27763,6 +27781,7 @@
    "price": 11500000,
    "year": 2025,
    "size": 1827,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27770,6 +27789,7 @@
    "price": 11400000,
    "year": 2025,
    "size": 2524,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27777,6 +27797,7 @@
    "price": 11200000,
    "year": 2025,
    "size": 1925,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27784,12 +27805,14 @@
    "price": 10700000,
    "year": 2025,
    "size": 1090,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
    "address": "NEWLANDS|16 MAIN STREET",
    "price": 10500000,
    "year": null,
+   "suburb": "Newlands",
    "source": "greeff sold"
   },
   {
@@ -27797,6 +27820,7 @@
    "price": 10500000,
    "year": 2025,
    "size": 840,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27804,6 +27828,7 @@
    "price": 10500000,
    "year": 2025,
    "size": 282,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27811,6 +27836,7 @@
    "price": 10300000,
    "year": 2025,
    "size": 991,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27818,6 +27844,7 @@
    "price": 10300000,
    "year": 2025,
    "size": 1267,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27825,6 +27852,7 @@
    "price": 10300000,
    "year": 2025,
    "size": 1350,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27832,6 +27860,7 @@
    "price": 10290000,
    "year": 2025,
    "size": 785,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27839,6 +27868,7 @@
    "price": 10100000,
    "year": 2025,
    "size": 916,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27846,6 +27876,7 @@
    "price": 9950000,
    "year": 2025,
    "size": 838,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27853,6 +27884,7 @@
    "price": 9800000,
    "year": 2025,
    "size": 744,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27860,6 +27892,7 @@
    "price": 9750000,
    "year": 2025,
    "size": 363,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27867,6 +27900,7 @@
    "price": 9500000,
    "year": 2025,
    "size": 924,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27874,6 +27908,7 @@
    "price": 9400000,
    "year": 2025,
    "size": 2057,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27881,6 +27916,7 @@
    "price": 9300000,
    "year": 2025,
    "size": 770,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27888,6 +27924,7 @@
    "price": 9000000,
    "year": 2025,
    "size": 720,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27895,6 +27932,7 @@
    "price": 9000000,
    "year": 2025,
    "size": 744,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27902,6 +27940,7 @@
    "price": 9000000,
    "year": 2025,
    "size": 1961,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27909,6 +27948,7 @@
    "price": 8900000,
    "year": 2025,
    "size": 991,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27916,6 +27956,7 @@
    "price": 8700000,
    "year": 2025,
    "size": 502,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27923,6 +27964,7 @@
    "price": 8550000,
    "year": 2025,
    "size": 711,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27930,6 +27972,7 @@
    "price": 8500000,
    "year": 2025,
    "size": 1608,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27937,6 +27980,7 @@
    "price": 8400000,
    "year": 2025,
    "size": 714,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27944,6 +27988,7 @@
    "price": 8350000,
    "year": 2025,
    "size": 609,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27951,6 +27996,7 @@
    "price": 8200000,
    "year": 2025,
    "size": 496,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27958,6 +28004,7 @@
    "price": 8050000,
    "year": 2025,
    "size": 651,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27965,6 +28012,7 @@
    "price": 8000000,
    "year": 2025,
    "size": 2378,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27972,6 +28020,7 @@
    "price": 8000000,
    "year": 2025,
    "size": 572,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27979,6 +28028,7 @@
    "price": 8000000,
    "year": 2025,
    "size": 556,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27986,6 +28036,7 @@
    "price": 7700000,
    "year": 2025,
    "size": 743,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -27993,6 +28044,7 @@
    "price": 7500000,
    "year": 2025,
    "size": 1213,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28000,6 +28052,7 @@
    "price": 7500000,
    "year": 2025,
    "size": 1141,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28007,6 +28060,7 @@
    "price": 7500000,
    "year": 2025,
    "size": 552,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28014,6 +28068,7 @@
    "price": 7302500,
    "year": 2025,
    "size": 744,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28021,6 +28076,7 @@
    "price": 7300000,
    "year": 2025,
    "size": 1115,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28028,6 +28084,7 @@
    "price": 7300000,
    "year": 2025,
    "size": 729,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28035,12 +28092,14 @@
    "price": 7200000,
    "year": 2025,
    "size": 1147,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
    "address": "KALK BAY|8 CLAIRVAUX ROAD",
    "price": 7000000,
    "year": null,
+   "suburb": "Kalk Bay",
    "source": "greeff sold"
   },
   {
@@ -28048,6 +28107,7 @@
    "price": 7000000,
    "year": 2025,
    "size": 839,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28055,6 +28115,7 @@
    "price": 7000000,
    "year": 2025,
    "size": 1373,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28062,6 +28123,7 @@
    "price": 6900000,
    "year": 2025,
    "size": 604,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28069,6 +28131,7 @@
    "price": 6800000,
    "year": 2025,
    "size": 744,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28076,6 +28139,7 @@
    "price": 6700000,
    "year": 2025,
    "size": 546,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28083,6 +28147,7 @@
    "price": 6650000,
    "year": 2025,
    "size": 845,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28090,6 +28155,7 @@
    "price": 6650000,
    "year": 2025,
    "size": 495,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28097,6 +28163,7 @@
    "price": 6600000,
    "year": 2025,
    "size": 599,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28104,6 +28171,7 @@
    "price": 6600000,
    "year": 2025,
    "size": 744,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28111,6 +28179,7 @@
    "price": 6500000,
    "year": 2025,
    "size": 635,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28118,6 +28187,7 @@
    "price": 6500000,
    "year": 2025,
    "size": 433,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28125,6 +28195,7 @@
    "price": 6495000,
    "year": 2025,
    "size": 396,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28132,6 +28203,7 @@
    "price": 6450000,
    "year": 2025,
    "size": 706,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28139,6 +28211,7 @@
    "price": 6400000,
    "year": 2025,
    "size": 694,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28146,6 +28219,7 @@
    "price": 6250000,
    "year": 2025,
    "size": 748,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28153,6 +28227,7 @@
    "price": 6250000,
    "year": 2025,
    "size": 569,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28160,6 +28235,7 @@
    "price": 6000000,
    "year": 2025,
    "size": 645,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28167,6 +28243,7 @@
    "price": 6000000,
    "year": 2025,
    "size": 520,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28174,6 +28251,7 @@
    "price": 5900000,
    "year": 2025,
    "size": 705,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28181,6 +28259,7 @@
    "price": 5798000,
    "year": 2025,
    "size": 446,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28188,6 +28267,7 @@
    "price": 5780000,
    "year": 2025,
    "size": 496,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28195,6 +28275,7 @@
    "price": 5725000,
    "year": 2025,
    "size": 696,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28202,6 +28283,7 @@
    "price": 5700000,
    "year": 2025,
    "size": 844,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28209,6 +28291,7 @@
    "price": 5675000,
    "year": 2025,
    "size": 654,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28216,6 +28299,7 @@
    "price": 5600000,
    "year": 2025,
    "size": 703,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28223,6 +28307,7 @@
    "price": 5600000,
    "year": 2025,
    "size": 744,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28230,6 +28315,7 @@
    "price": 5600000,
    "year": 2025,
    "size": 696,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28237,6 +28323,7 @@
    "price": 5600000,
    "year": 2025,
    "size": 300,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28244,6 +28331,7 @@
    "price": 5525000,
    "year": 2025,
    "size": 643,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28251,6 +28339,7 @@
    "price": 5500000,
    "year": 2025,
    "size": 496,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28258,6 +28347,7 @@
    "price": 5400000,
    "year": 2025,
    "size": 680,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28265,6 +28355,7 @@
    "price": 5400000,
    "year": 2025,
    "size": 424,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28272,6 +28363,7 @@
    "price": 5350000,
    "year": 2025,
    "size": 742,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28279,6 +28371,7 @@
    "price": 5350000,
    "year": 2025,
    "size": 744,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28286,6 +28379,7 @@
    "price": 5350000,
    "year": 2025,
    "size": 1190,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28293,6 +28387,7 @@
    "price": 5295000,
    "year": 2025,
    "size": 499,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28300,6 +28395,7 @@
    "price": 5250000,
    "year": 2025,
    "size": 802,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28307,6 +28403,7 @@
    "price": 5200000,
    "year": 2025,
    "size": 744,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28314,6 +28411,7 @@
    "price": 5100000,
    "year": 2025,
    "size": 520,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28321,6 +28419,7 @@
    "price": 5000000,
    "year": 2025,
    "size": 496,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28328,6 +28427,7 @@
    "price": 5000000,
    "year": 2025,
    "size": 744,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28342,6 +28442,7 @@
    "price": 4700000,
    "year": 2025,
    "size": 455,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28349,6 +28450,7 @@
    "price": 4600000,
    "year": 2025,
    "size": 595,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28356,6 +28458,7 @@
    "price": 4600000,
    "year": 2025,
    "size": 496,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28363,6 +28466,7 @@
    "price": 4600000,
    "year": 2025,
    "size": 744,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28370,6 +28474,7 @@
    "price": 4585000,
    "year": 2025,
    "size": 547,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28377,6 +28482,7 @@
    "price": 4550000,
    "year": 2025,
    "size": 400,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28384,6 +28490,7 @@
    "price": 4550000,
    "year": 2025,
    "size": 314,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28391,6 +28498,7 @@
    "price": 4500000,
    "year": 2025,
    "size": 760,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28398,6 +28506,7 @@
    "price": 4500000,
    "year": 2025,
    "size": 407,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28405,6 +28514,7 @@
    "price": 4490000,
    "year": 2025,
    "size": 406,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28412,6 +28522,7 @@
    "price": 4300000,
    "year": 2025,
    "size": 565,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28419,6 +28530,7 @@
    "price": 4250000,
    "year": 2025,
    "size": 404,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28426,6 +28538,7 @@
    "price": 4200000,
    "year": 2025,
    "size": 373,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28433,6 +28546,7 @@
    "price": 4200000,
    "year": 2025,
    "size": 661,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28440,6 +28554,7 @@
    "price": 4200000,
    "year": 2025,
    "size": 403,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28447,6 +28562,7 @@
    "price": 4200000,
    "year": 2025,
    "size": 442,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28454,6 +28570,7 @@
    "price": 4150000,
    "year": 2025,
    "size": 446,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28461,6 +28578,7 @@
    "price": 4100000,
    "year": 2025,
    "size": 616,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28468,6 +28586,7 @@
    "price": 4100000,
    "year": 2025,
    "size": 408,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28475,6 +28594,7 @@
    "price": 4000000,
    "year": 2025,
    "size": 560,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28482,6 +28602,7 @@
    "price": 4000000,
    "year": 2025,
    "size": 287,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28489,6 +28610,7 @@
    "price": 3950000,
    "year": 2025,
    "size": 842,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28496,6 +28618,7 @@
    "price": 3935000,
    "year": 2025,
    "size": 352,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28503,6 +28626,7 @@
    "price": 3900000,
    "year": 2025,
    "size": 495,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28510,6 +28634,7 @@
    "price": 3895000,
    "year": 2025,
    "size": 373,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28517,6 +28642,7 @@
    "price": 3800000,
    "year": 2025,
    "size": 942,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28524,6 +28650,7 @@
    "price": 3800000,
    "year": 2025,
    "size": 212,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28531,6 +28658,7 @@
    "price": 3768300,
    "year": 2025,
    "size": 225,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28538,12 +28666,14 @@
    "price": 3700000,
    "year": 2025,
    "size": 173,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
    "address": "KENILWORTH UPPER|7 THE CURRAGH 8 KENILWORTH ROAD",
    "price": 3600000,
    "year": null,
+   "suburb": "Kenilworth Upper",
    "source": "greeff sold"
   },
   {
@@ -28551,6 +28681,7 @@
    "price": 3595000,
    "year": 2025,
    "size": 233,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28558,6 +28689,7 @@
    "price": 3550000,
    "year": 2025,
    "size": 354,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28565,6 +28697,7 @@
    "price": 3510054,
    "year": 2025,
    "size": 665,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28572,6 +28705,7 @@
    "price": 3500000,
    "year": 2025,
    "size": 496,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28579,6 +28713,7 @@
    "price": 3500000,
    "year": 2025,
    "size": 456,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28586,12 +28721,14 @@
    "price": 3425000,
    "year": 2025,
    "size": 357,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
    "address": "CAPE TOWN CITY CENTRE|2304 16 ON BREE 16 BREE STREET",
    "price": 3295000,
    "year": null,
+   "suburb": "Cape Town City Centre",
    "source": "greeff sold"
   },
   {
@@ -28599,6 +28736,7 @@
    "price": 3233000,
    "year": 2025,
    "size": 496,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28606,6 +28744,7 @@
    "price": 3200000,
    "year": 2025,
    "size": 164,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28613,6 +28752,7 @@
    "price": 3000000,
    "year": 2025,
    "size": 319,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28620,6 +28760,7 @@
    "price": 3000000,
    "year": 2025,
    "size": 654,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
@@ -28627,12 +28768,14 @@
    "price": 3000000,
    "year": 2025,
    "size": 139,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
    "address": "SEA POINT|314 SIX ON N 6 NORFOLK ROAD",
    "price": 2875000,
    "year": null,
+   "suburb": "Sea Point",
    "source": "greeff sold"
   },
   {
@@ -28640,12 +28783,14 @@
    "price": 2550000,
    "year": 2025,
    "size": 122,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
    "address": "WOODSTOCK|602 THE IRON WORKS 3 ARMADALE STREET",
    "price": 2150000,
    "year": null,
+   "suburb": "Woodstock",
    "source": "greeff sold"
   },
   {
@@ -28653,24 +28798,28 @@
    "price": 2100000,
    "year": 2025,
    "size": 568,
+   "suburb": "Rondebosch",
    "source": "realestateinsider"
   },
   {
    "address": "WOODSTOCK|1 THE IRON WORKS 3 ARMADALE STREET",
    "price": 1750000,
    "year": null,
+   "suburb": "Woodstock",
    "source": "greeff sold"
   },
   {
    "address": "CLAREMONT UPPER|2 THE GROVE 18 GROVE AVENUE",
    "price": 1595000,
    "year": null,
+   "suburb": "Claremont Upper",
    "source": "greeff sold"
   },
   {
    "address": "STEENBERG|61 SONATA",
    "price": 1050000,
    "year": null,
+   "suburb": "Steenberg",
    "source": "greeff sold"
   }
  ]

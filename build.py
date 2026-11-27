@@ -34,7 +34,7 @@ def load_sold():
                 continue
             k = key(row.get("suburb", "")) + "|" + key(row["address"])
             out.setdefault(k, {"price": int(row["price"]), "year": None,
-                               "source": "greeff sold"})
+                               "suburb": row.get("suburb", ""), "source": "greeff sold"})
     # bulk transfers pulled from published audit lists
     f = HERE / "sold_audit.csv"
     if f.exists():
@@ -42,7 +42,7 @@ def load_sold():
             k = key(row.get("suburb", "")) + "|" + key(row["address"])
             out.setdefault(k, {"price": int(row["price"]), "year": int(row["year"]),
                                "size": int(row["size"]) if row.get("size") else None,
-                               "source": row.get("source", "audit")})
+                               "suburb": row.get("suburb", ""), "source": row.get("source", "audit")})
     return out
 
 
@@ -63,9 +63,11 @@ def main():
         s = sold.get(key(l.get("suburb", "")) + "|" + key(l.get("address")))
         card = dict(l)
         card["sold"] = card["sold_year"] = card["jump"] = card["per_year"] = None
-        # agency "sold" prices are advertised, not deeds-verified: they fill the sales table
-        # but never drive a jump figure on a card.
-        if s and l.get("price") and s.get("source") != "greeff sold":
+        # agency prices are advertised, not deeds-verified. They drive a jump, but the card
+        # says which source it came from -- a wrong unlabelled jump is the one thing this
+        # site cannot survive.
+        # sold == asking is the same listing seen twice, not a markup: nothing to show
+        if s and l.get("price") and s.get("price") != l["price"]:
             card["sold"] = s["price"]
             card["sold_year"] = s["year"]
             card["sold_source"] = s.get("source")
