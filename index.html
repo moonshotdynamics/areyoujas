@@ -156,10 +156,10 @@
           <small>Nine Rouwkoop Road, Rondebosch. Bought in 2025, back on the market within the year. That's the whole site: what Cape Town paid, and what it wants.</small>
         </h1>
         <div class="hero-stats">
-          <span><b id="s-listings">—</b>listings</span>
+          <span><b id="s-listings">—</b>past sale + a price now</span>
           <span><b id="s-suburbs">—</b>suburbs</span>
-          <span><b id="s-matched">—</b>with a deeds price</span>
-          <span><b id="s-sold">—</b>sold records</span>
+          <span><b id="s-matched">—</b>biggest jump</span>
+          <span><b id="s-sold">—</b>sold records held</span>
         </div>
       </div>
       <div class="cape" aria-hidden="true">
@@ -197,7 +197,6 @@
       <option value="beds">Bedrooms</option>
       <option value="new">Newest</option>
     </select>
-    <label class="chk"><input type="checkbox" id="onlySold" checked> Sold price known</label>
     <button id="reset">Clear</button>
   </div>
   <p id="count"></p>
@@ -228,8 +227,8 @@ const rand = n => "R" + Math.round(n).toLocaleString("en-ZA").replace(/,/g, " ")
 const mil  = n => "R" + (n/1e6).toFixed(n >= 1e7 ? 1 : 2).replace(/\.0+$/, "").replace(".", ",") + "m";
 const jumpClass = j => j == null ? "none" : j > 0 ? "up" : j < 0 ? "down" : "none";
 
-// opens on the pairs: a listing with no sold price is half the joke
-let DATA = null, REACTS = {}, state = {q:"", sort:"jump", onlySold:true};
+// every card has both numbers -- a listing without a past sale is not on this site
+let DATA = null, REACTS = {}, state = {q:"", sort:"jump"};
 const voted = k => (localStorage.getItem(k) || "").split(",").filter(Boolean);
 const n = (id, kind) => (REACTS[id] || {})[kind] || 0;
 
@@ -366,9 +365,9 @@ function renderStats(){
   const s = DATA.stats;
   document.getElementById("s-listings").textContent = s.listings.toLocaleString("en-ZA");
   document.getElementById("s-suburbs").textContent  = s.suburbs ?? 1;
-  document.getElementById("s-matched").textContent  = s.matched;
+  document.getElementById("s-matched").textContent  = s.biggest_jump == null ? "—" : "+" + s.biggest_jump + "%";
   document.getElementById("s-sold").textContent     = DATA.sold.length;
-  document.getElementById("edition").textContent    = `Cape Town · ${s.listings.toLocaleString("en-ZA")} listings · ${s.suburbs} suburbs`;
+  document.getElementById("edition").textContent    = `Cape Town · ${s.listings} with a past sale · ${s.suburbs} suburbs`;
 }
 
 function card(c){
@@ -419,23 +418,19 @@ function render(){
       (beds == null || (c.beds || 0) >= beds) &&
       (baths == null || (c.baths || 0) >= baths) &&
       (min == null || c.price >= min) &&
-      (max == null || c.price <= max) &&
-      (!state.onlySold || c.sold));
+      (max == null || c.price <= max));
   const s = state.sort;
   rows.sort((a,b) => s === "jump" ? (b.jump ?? -999) - (a.jump ?? -999)
                   : s === "price" ? b.price - a.price
                   : s === "beds" ? (b.beds ?? 0) - (a.beds ?? 0)
                   : s === "cheap" ? a.price - b.price
                   : (b.id > a.id ? 1 : -1));
-  document.getElementById("count").textContent = state.onlySold
-    ? `${rows.length} of ${DATA.listings.length} listings have a sold price · untick to see the rest`
-    : `${rows.length} of ${DATA.listings.length} listings`;
+  document.getElementById("count").textContent =
+    `${rows.length} of ${DATA.listings.length} properties with a past sale · ` +
+    `${(DATA.stats.scanned || 0).toLocaleString("en-ZA")} listings scanned`;
   document.getElementById("grid").innerHTML =
     rows.length ? rows.map(card).join("")
-      : `<p class="empty">${state.onlySold
-          ? "Only " + DATA.stats.matched + " listing" + (DATA.stats.matched === 1 ? " has" : "s have") +
-            ' a deeds sold price so far. Untick "Sold price known" to see all ' + DATA.listings.length + "."
-          : "No listings match those filters."}</p>`;
+      : `<p class="empty">No properties match those filters.</p>`;
 }
 
 function renderSold(){
@@ -460,13 +455,11 @@ Promise.all([fetch("data.json").then(r => r.json()),
   document.getElementById("reset").onclick = () => {
     ["f-suburb","f-kind","f-beds","f-baths","f-min","f-max"].forEach(id => document.getElementById(id).value = "");
     document.getElementById("q").value = "";
-    document.getElementById("onlySold").checked = false;
-    state.q = ""; state.onlySold = false; render();
+    state.q = ""; render();
   };
   document.getElementById("stamp").textContent = "Data for " + d.generated + ".";
   document.getElementById("q").oninput = e => { state.q = e.target.value; render(); };
   document.getElementById("sort").onchange = e => { state.sort = e.target.value; render(); };
-  document.getElementById("onlySold").onchange = e => { state.onlySold = e.target.checked; render(); };
 }).catch(() => {
   document.getElementById("grid").innerHTML = '<p class="empty">Listings could not be loaded.</p>';
 });

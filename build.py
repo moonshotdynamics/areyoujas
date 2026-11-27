@@ -77,10 +77,13 @@ def main():
         card["suburb"] = l.get("suburb") or None
         card["url"] = ("https://www.property24.com/for-sale/%s/cape-town/western-cape/%s/%s"
                        % (l.get("slug", "rondebosch"), "8682", l["id"]))
+        if not card["sold"]:
+            continue                       # no past sale, no card: pairs are the entire product
         cards.append(card)
 
     matched = [c for c in cards if c["sold"]]
     stats = {
+        "scanned": len(seen),
         "listings": len(cards),
         "matched": len(matched),
         "suburbs": len({c.get("suburb") or "Unknown" for c in cards}),
