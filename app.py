@@ -11,6 +11,8 @@ import json
 import os
 import re
 import sqlite3
+import subprocess
+import sys
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -98,5 +100,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
+    if not (HERE / "dist" / "index.html").exists():      # platform may skip the build step
+        subprocess.run([sys.executable, "build.py"], cwd=HERE, check=False)
     print(f"areyoujas on :{PORT}  db={DB}")
     ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
