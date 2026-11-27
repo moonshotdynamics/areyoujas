@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Are You Jas? — Cape Town property, priced by the hopeful</title>
+<meta name="description" content="What a Cape Town property last sold for, versus what it's asking now. The jas factor, per house.">
+<style>
+  :root{--bg:#0b1220;--card:#131c2e;--line:#22304a;--ink:#e8eefc;--dim:#8ea0bf;--lime:#c8ff2e;--hot:#ff5c5c;--warm:#ffb020}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  header{padding:56px 0 28px;border-bottom:1px solid var(--line)}
+  h1{margin:0;font-size:clamp(38px,7vw,76px);line-height:.95;letter-spacing:-.03em;font-weight:800}
+  h1 span{color:var(--lime)}
+  .tag{color:var(--dim);margin:14px 0 0;max-width:46ch}
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+  .stat b{display:block;font-size:22px}
+  .stat small{color:var(--dim);text-transform:uppercase;letter-spacing:.08em;font-size:11px}
+  .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:26px 0 18px}
+  input[type=search],select{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:15px}
+  input[type=search]{flex:1;min-width:200px}
+  label.chk{display:flex;gap:8px;align-items:center;color:var(--dim);font-size:14px;cursor:pointer}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding:0 0 40px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#0a0f19}
+  .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .addr{font-weight:700;font-size:17px}
+  .sub{color:var(--dim);font-size:13px}
+  .price{font-size:24px;font-weight:800;letter-spacing:-.02em}
+  .sold{font-size:13px;color:var(--dim);border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
+  .jump{display:inline-block;font-weight:800;border-radius:999px;padding:2px 10px;font-size:13px;background:#22304a;color:var(--ink)}
+  .jump.hot{background:var(--hot);color:#1a0505}
+  .jump.warm{background:var(--warm);color:#241500}
+  .jump.ok{background:var(--lime);color:#122000}
+  .reacts{display:flex;gap:6px;margin-top:8px}
+  .reacts button{background:#0e1626;border:1px solid var(--line);color:var(--ink);border-radius:999px;
+    padding:4px 10px;font-size:13px;cursor:pointer;font-family:inherit}
+  .reacts button:hover{border-color:var(--lime)}
+  .reacts button[disabled]{opacity:.55;cursor:default}
+  .card a.p24{font-size:12px;color:var(--dim);text-decoration:none}
+  .card a.p24:hover{color:var(--lime)}
+  h2{font-size:clamp(22px,3vw,30px);margin:40px 0 6px;letter-spacing:-.02em}
+  .lede{color:var(--dim);margin:0 0 18px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .scroll{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:14px}
+  footer{color:var(--dim);font-size:13px;padding:30px 0 60px;border-top:1px solid var(--line)}
+  .empty{color:var(--dim);padding:30px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>ARE YOU <span>JAS?</span></h1>
+    <p class="tag">Cape Town property, priced by the hopeful. What it last sold for, what it's asking now, and the jump in between.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="bar">
+    <input type="search" id="q" placeholder="Search street, e.g. Rouwkoop">
+    <select id="sort">
+      <option value="jump">Biggest jump first</option>
+      <option value="price">Price: high to low</option>
+      <option value="cheap">Price: low to high</option>
+      <option value="new">Newest listings</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="onlySold"> Only with a sold price</label>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <h2 id="soldTitle">What actually sold</h2>
+  <p class="lede" id="soldLede"></p>
+  <div class="scroll"><table id="soldTable"></table></div>
+
+  <!-- Comments: giscus (GitHub Discussions) is the zero-backend option.
+       Repo must be public + Discussions on, then https://giscus.app gives you the two ids.
+  <h2>Talk your nonsense</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="ISAAC/areyoujas" data-repo-id="R_xxx" data-category="General"
+          data-category-id="DIC_xxx" data-mapping="pathname" data-theme="dark"
+          data-reactions-enabled="1" data-loading="lazy" crossorigin="anonymous" async></script>
+  -->
+
+  <footer>
+    <p>Asking prices live from Property24 listings. Sold prices from the Deeds Office record via Property24, and from audited transfer lists (Real Estate Insider). Listings and sold data may lag the market — this is a gossip site, not a valuation.</p>
+    <p id="stamp"></p>
+  </footer>
+</div>
+
+<script>
+const rand = n => "R" + Math.round(n).toLocaleString("en-ZA").replace(/,/g, " ");
+const mil  = n => "R" + (n/1e6).toFixed(n >= 1e7 ? 1 : 2).replace(/\.0+$/, "") + "m";
+
+function jumpClass(j){ return j == null ? "" : j >= 100 ? "hot" : j >= 40 ? "warm" : "ok"; }
+
+let DATA = null, state = {q:"", sort:"jump", onlySold:false};
+let REACTS = {};                                  // {id: {jas: n, ...}}, empty if the API isn't there
+const voted = k => (localStorage.getItem(k) || "").split(",").filter(Boolean);
+const n = (id, kind) => (REACTS[id] || {})[kind] || 0;
+
+function wireReacts(){
+  document.getElementById("grid").addEventListener("click", async e => {
+    const b = e.target.closest(".reacts button");
+    if (!b || b.disabled) return;
+    const id = b.parentElement.dataset.id, kind = b.dataset.kind, key = `voted:${id}`;
+    if (voted(key).includes(kind)) return;
+    b.disabled = true;
+    localStorage.setItem(key, [...voted(key), kind].join(","));
+    try {
+      const r = await fetch("/api/react", {method:"POST", headers:{"Content-Type":"application/json"},
+                                          body: JSON.stringify({id, kind})});
+      const j = await r.json();
+      if (j.n != null) { (REACTS[id] ??= {})[kind] = j.n; b.querySelector("span").textContent = j.n; }
+    } catch { b.querySelector("span").textContent = "?"; }
+  });
+}
+
+function renderStats(){
+  const s = DATA.stats;
+  const el = document.getElementById("stats");
+  el.innerHTML = `
+    <div class="stat"><b>${s.listings}</b><small>listings tracked</small></div>
+    <div class="stat"><b>${s.matched}</b><small>with a known last sale</small></div>
+    <div class="stat"><b>${s.biggest_jump == null ? "—" : "+" + s.biggest_jump + "%"}</b><small>biggest jump</small></div>
+    <div class="stat"><b>${mil(s.median_ask)}</b><small>median asking</small></div>`;
+}
+
+function card(c){
+  const sold = c.sold
+    ? `<div class="sold">Last sold <b>${mil(c.sold)}</b> · ${c.sold_year}
+         ${c.jump == null ? "" : `<span class="jump ${jumpClass(c.jump)}">${c.jump > 0 ? "+" : ""}${c.jump}%</span>`}
+       </div>`
+    : `<div class="sold">Last sold: <i>not on record</i></div>`;
+  return `<div class="card">
+    ${c.image ? `<img loading="lazy" src="${c.image}" alt="">` : ""}
+    <div class="body">
+      <div class="addr">${c.address || "Address on request"}</div>
+      <div class="sub">${c.suburb} · ${c.beds ?? "?"} bed · ${c.baths ?? "?"} bath${c.erf ? " · " + c.erf + " m²" : ""}</div>
+      <div class="price">${rand(c.price)}</div>
+      ${sold}
+      <div class="reacts" data-id="${c.id}">
+        <button data-kind="jas">🔥 <span>${n(c.id,"jas")}</span></button>
+        <button data-kind="yoh">😭 <span>${n(c.id,"yoh")}</span></button>
+        <button data-kind="lol">😂 <span>${n(c.id,"lol")}</span></button>
+      </div>
+      <a class="p24" href="${c.url}" target="_blank" rel="noopener">View on Property24 ↗</a>
+    </div></div>`;
+}
+
+function render(){
+  const q = state.q.toLowerCase();
+  let rows = DATA.listings.filter(c =>
+      (!q || (c.address || "").toLowerCase().includes(q) || (c.suburb || "").toLowerCase().includes(q)) &&
+      (!state.onlySold || c.sold));
+  const s = state.sort;
+  rows.sort((a,b) => s === "jump" ? (b.jump ?? -999) - (a.jump ?? -999)
+                  : s === "price" ? b.price - a.price
+                  : s === "cheap" ? a.price - b.price
+                  : (b.id > a.id ? 1 : -1));
+  const g = document.getElementById("grid");
+  g.innerHTML = rows.length ? rows.map(card).join("") : `<p class="empty">Nothing matches.</p>`;
+}
+
+function renderSold(){
+  const rows = DATA.sold.slice(0, 60);
+  document.getElementById("soldLede").textContent =
+    `Rondebosch, ${rows[0]?.year ?? ""} — ${DATA.sold.length} recorded transfers, highest first. This is the number an asking price has to beat.`;
+  document.getElementById("soldTable").innerHTML =
+    `<thead><tr><th>Address</th><th>Size</th><th class="num">Sold for</th><th class="num">R/m²</th></tr></thead><tbody>` +
+    rows.map(r => `<tr><td>${r.address}</td><td>${r.size ? r.size + " m²" : "—"}</td>
+      <td class="num">${rand(r.price)}</td><td class="num">${Math.round(r.price / (r.size || 1)).toLocaleString("en-ZA")}</td></tr>`).join("") +
+    `</tbody>`;
+}
+
+Promise.all([fetch("data.json").then(r => r.json()),
+             fetch("/api/reacts").then(r => r.json()).catch(() => ({}))]).then(([d, reacts]) => {
+  DATA = d; REACTS = reacts || {}; renderStats(); render(); renderSold(); wireReacts();
+  document.getElementById("stamp").textContent = "Data refreshed " + d.generated + ".";
+  document.getElementById("q").oninput = e => { state.q = e.target.value; render(); };
+  document.getElementById("sort").onchange = e => { state.sort = e.target.value; render(); };
+  document.getElementById("onlySold").onchange = e => { state.onlySold = e.target.checked; render(); };
+}).catch(() => {
+  document.getElementById("grid").innerHTML = '<p class="empty">Data failed to load.</p>';
+});
+</script>
+</body>
+</html>
