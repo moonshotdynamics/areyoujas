@@ -85,6 +85,8 @@
   .dots{position:absolute;left:0;right:0;bottom:7px;display:flex;justify-content:center;gap:4px;pointer-events:none}
   .dots i{width:5px;height:5px;border-radius:50%;background:rgba(255,253,247,.55);box-shadow:0 0 0 1px rgba(29,58,48,.25)}
   .dots i.on{background:#fffdf7}
+  .noimg{display:grid;place-items:center;aspect-ratio:4/3;font:11px/1 var(--mono);letter-spacing:.1em;
+        text-transform:uppercase;color:#8d8578;background:repeating-linear-gradient(45deg,#e9e3d5,#e9e3d5 8px,#e4ddcd 8px,#e4ddcd 16px)}
   .count{position:absolute;top:8px;right:8px;font:11px/1 var(--mono);color:#fffdf7;
         background:rgba(25,31,28,.6);padding:4px 6px;border-radius:2px}
 
@@ -155,7 +157,7 @@
         <div class="hero-stats">
           <span><b id="s-listings">—</b>listings</span>
           <span><b id="s-suburbs">—</b>suburbs</span>
-          <span><b id="s-matched">—</b>with a last sale</span>
+          <span><b id="s-matched">—</b>with a deeds price</span>
           <span><b id="s-sold">—</b>sold records</span>
         </div>
       </div>
@@ -250,10 +252,11 @@ const n = (id, kind) => (REACTS[id] || {})[kind] || 0;
   function seed(){
     const r = cv.parentElement.getBoundingClientRect();
     parts = Array.from({length: 22}, () => ({
-      x: Math.random() * r.width, y: Math.random() * r.height,
-      vx: .35 + Math.random() * .85, s: 10 + Math.random() * 3,
+      // keep the wind to the left of the copy: tags live over the mountain, not the headline
+      x: r.width * (.42 + Math.random() * .58), y: Math.random() * r.height,
+      vx: .35 + Math.random() * .85, s: 11 + Math.random() * 3,
       rot: (Math.random() - .5) * .5, ph: Math.random() * 6.28,
-      t: tags[Math.floor(Math.random() * tags.length)], a: .16 + Math.random() * .3
+      t: tags[Math.floor(Math.random() * tags.length)], a: .26 + Math.random() * .26
     }));
   }
   function draw(){
@@ -264,7 +267,7 @@ const n = (id, kind) => (REACTS[id] || {})[kind] || 0;
       if (!still){
         p.x += p.vx * (1 + gust * 3);
         p.y += Math.sin(p.ph += .01) * .16;
-        if (p.x > r.width + 40){ p.x = -40; p.y = Math.random() * r.height; }
+        if (p.x > r.width + 40){ p.x = r.width * .45; p.y = Math.random() * r.height; }
       }
       ctx.save();
       ctx.globalAlpha = p.a * (1 + gust * .5);
@@ -371,10 +374,10 @@ function card(c){
          <span class="jump ${jumpClass(c.jump)}">${c.jump > 0 ? "+" : ""}${c.jump}%</span></div>`
     : `<div class="sold"><span>Last sold price not on record</span><span class="jump none"></span></div>`;
   const shots = (c.images && c.images.length > 1) ? c.images : (c.image ? [c.image.replace("/Crop525x350", "/Ensure1280x720")] : []);
-  const media = shots.length ? `<div class="shots" data-shots="${c.id}">
+  const media = !shots.length ? `<div class="noimg">no photograph</div>` : `<div class="shots" data-shots="${c.id}">
       <div class="track">${shots.map((s,i) => `<img loading="${i ? "lazy" : "eager"}" src="${s}" alt="${c.address || "Cape Town property"} photo ${i+1}" data-i="${i}">`).join("")}</div>
       ${shots.length > 1 ? `<div class="dots">${shots.map((_,i) => `<i class="${i ? "" : "on"}"></i>`).join("")}</div><div class="count">1/${shots.length}</div>` : ""}
-    </div>` : "";
+    </div>`;
   return `<div class="card">
     ${media}
     <div class="body">

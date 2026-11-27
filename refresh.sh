@@ -5,6 +5,7 @@ set -u
 cd "$(dirname "$0")"
 
 python scrape.py || echo "scrape: partial"
+python galleries.py 40 || echo "galleries: partial"   # photo galleries, budgeted; aborts on 503 and resumes from cache
 python sold.py   || echo "sold: partial"
 python build.py  || exit 1
 
