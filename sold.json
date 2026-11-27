@@ -2,6 +2,7 @@
  "9 Rouwkoop Road": {
   "price": 4750000,
   "year": 2025,
-  "source": "property24 deeds"
+  "source": "property24 deeds",
+  "suburb": "Rondebosch"
  }
 }

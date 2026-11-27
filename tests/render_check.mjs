@@ -24,7 +24,7 @@ if (!cards) throw new Error("no cards rendered");
 if (listed && cards !== listed.listings.length) throw new Error(`rendered ${cards} cards, data has ${listed.listings.length}`);
 if (!/9 Rouwkoop Road/.test(grid)) throw new Error("hero property missing");
 if (!/\+173%/.test(grid)) throw new Error("jump badge missing");
-if (!els.stats.innerHTML.includes("listings tracked")) throw new Error("stats strip empty");
+if (!/listings over/.test(els.stats.innerHTML)) throw new Error("stats line empty");
 if (!els.soldTable.innerHTML.includes("R/m")) throw new Error("sold table empty");
 if (!/data-kind="jas"/.test(grid)) throw new Error("reaction buttons missing");
 

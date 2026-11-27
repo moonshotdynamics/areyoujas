@@ -19,16 +19,27 @@ def key(address):
 
 
 def load_sold():
+    """Keyed by suburb + address. Address alone collides across Cape Town
+    ("2 Glen Avenue" is in a dozen suburbs) and a wrong sold price is worse than none."""
     out = {}
     f = HERE / "sold.json"
     if f.exists():
         for k, v in json.loads(f.read_text()).items():
-            out[key(k)] = v
+            out[key(v.get("suburb", "")) + "|" + key(k)] = v
+    # agency sold listings (address + advertised achieved price, no transfer date)
+    f = HERE / "sold_greeff.csv"
+    if f.exists():
+        for row in csv.DictReader(f.open()):
+            if not row.get("address"):
+                continue
+            k = key(row.get("suburb", "")) + "|" + key(row["address"])
+            out.setdefault(k, {"price": int(row["price"]), "year": None,
+                               "source": "greeff sold"})
     # bulk transfers pulled from published audit lists
     f = HERE / "sold_audit.csv"
     if f.exists():
         for row in csv.DictReader(f.open()):
-            k = key(row["address"])
+            k = key(row.get("suburb", "")) + "|" + key(row["address"])
             out.setdefault(k, {"price": int(row["price"]), "year": int(row["year"]),
                                "size": int(row["size"]) if row.get("size") else None,
                                "source": row.get("source", "audit")})
@@ -49,16 +60,18 @@ def main():
         if isinstance(l.get("erf"), str):                       # "433 m²" -> 433
             digits = re.sub(r"\D", "", l["erf"])
             l["erf"] = int(digits) if digits else None
-        s = sold.get(key(l.get("address")))
+        s = sold.get(key(l.get("suburb", "")) + "|" + key(l.get("address")))
         card = dict(l)
         card["sold"] = card["sold_year"] = card["jump"] = card["per_year"] = None
-        if s and l.get("price"):
+        # agency "sold" prices are advertised, not deeds-verified: they fill the sales table
+        # but never drive a jump figure on a card.
+        if s and l.get("price") and s.get("source") != "greeff sold":
             card["sold"] = s["price"]
             card["sold_year"] = s["year"]
             card["sold_source"] = s.get("source")
             card["jump"] = round(100 * (l["price"] - s["price"]) / s["price"])
-            held = max(1, year_now - s["year"])
-            card["per_year"] = round(card["jump"] / held)
+            if s.get("year"):
+                card["per_year"] = round(card["jump"] / max(1, year_now - s["year"]))
         card["suburb"] = l.get("suburb") or None
         card["url"] = ("https://www.property24.com/for-sale/%s/cape-town/western-cape/%s/%s"
                        % (l.get("slug", "rondebosch"), "8682", l["id"]))

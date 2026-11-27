@@ -149,7 +149,7 @@ def scrape(budget=150, deep=False):
                            for n in range(2, 2 + (total // 22))]
         for page in filter(None, pages):
             for l in parse_search(page, name):
-                listings.setdefault(l["id"], l)
+                listings.setdefault(l["id"], {}).update(l)   # re-crawls refresh fields
     missing = [l for l in listings.values() if not l["address"]]
     print(f"{len(listings)} listings, {len(missing)} without a street address")
     if deep:                                           # addresses are only needed for the sold join

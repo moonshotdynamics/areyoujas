@@ -3,103 +3,109 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Are You Jas? — Cape Town property, priced by the hopeful</title>
-<meta name="description" content="What a Cape Town property last sold for, versus what it's asking now. The jas factor, per house.">
+<title>Are You Jas — Cape Town property, last sold vs asking</title>
+<meta name="description" content="Cape Town listings with the price they last sold for and the price being asked now.">
 <style>
-  :root{--bg:#0b1220;--card:#131c2e;--line:#22304a;--ink:#e8eefc;--dim:#8ea0bf;--lime:#c8ff2e;--hot:#ff5c5c;--warm:#ffb020}
+  :root{
+    --bg:#fbfbfa; --ink:#151515; --muted:#6b6b6b; --line:#e3e2df; --line-strong:#cfcecb;
+    --up:#b42318; --down:#067647;
+  }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
-  a{color:inherit}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-  header{padding:56px 0 28px;border-bottom:1px solid var(--line)}
-  h1{margin:0;font-size:clamp(38px,7vw,76px);line-height:.95;letter-spacing:-.03em;font-weight:800}
-  h1 span{color:var(--lime)}
-  .tag{color:var(--dim);margin:14px 0 0;max-width:46ch}
-  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
-  .stat b{display:block;font-size:22px}
-  .stat small{color:var(--dim);text-transform:uppercase;letter-spacing:.08em;font-size:11px}
-  .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:26px 0 18px}
-  input[type=search],select{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:15px}
-  input[type=search]{flex:1;min-width:200px}
-  label.chk{display:flex;gap:8px;align-items:center;color:var(--dim);font-size:14px;cursor:pointer}
-  #reset{background:var(--card);color:var(--dim);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;font-size:14px}
-  #reset:hover{color:var(--ink);border-color:var(--lime)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding:0 0 40px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-  .card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#0a0f19}
-  .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
-  .addr{font-weight:700;font-size:17px}
-  .sub{color:var(--dim);font-size:13px}
-  .price{font-size:24px;font-weight:800;letter-spacing:-.02em}
-  .sold{font-size:13px;color:var(--dim);border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
-  .jump{display:inline-block;font-weight:800;border-radius:999px;padding:2px 10px;font-size:13px;background:#22304a;color:var(--ink)}
-  .jump.hot{background:var(--hot);color:#1a0505}
-  .jump.warm{background:var(--warm);color:#241500}
-  .jump.ok{background:var(--lime);color:#122000}
-  .reacts{display:flex;gap:6px;margin-top:8px}
-  .reacts button{background:#0e1626;border:1px solid var(--line);color:var(--ink);border-radius:999px;
-    padding:4px 10px;font-size:13px;cursor:pointer;font-family:inherit}
-  .reacts button:hover{border-color:var(--lime)}
-  .reacts button[disabled]{opacity:.55;cursor:default}
-  .card a.p24{font-size:12px;color:var(--dim);text-decoration:none}
-  .card a.p24:hover{color:var(--lime)}
-  h2{font-size:clamp(22px,3vw,30px);margin:40px 0 6px;letter-spacing:-.02em}
-  .lede{color:var(--dim);margin:0 0 18px}
-  table{width:100%;border-collapse:collapse;font-size:14px}
-  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
-  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:2px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);padding:40px 0 24px}
+  h1{margin:0;font-size:30px;line-height:1.2;font-weight:600;letter-spacing:-0.01em}
+  .tag{color:var(--muted);margin:8px 0 0;max-width:68ch;font-size:14px}
+  .stats{margin:20px 0 0;color:var(--muted);font-size:13px}
+  .stats b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+
+  .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:20px 0 12px;border-bottom:1px solid var(--line)}
+  select,input[type=search],input[type=number],button{
+    font:inherit;font-size:13px;color:var(--ink);background:#fff;
+    border:1px solid var(--line-strong);border-radius:6px;padding:7px 9px}
+  select:hover,input:hover,button:hover{border-color:#a9a7a2}
+  select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid #151515;outline-offset:1px}
+  input[type=search]{flex:1;min-width:180px}
+  input[type=number]{width:104px}
+  label.chk{display:flex;gap:6px;align-items:center;color:var(--muted);font-size:13px;cursor:pointer}
+  #reset{color:var(--muted);background:transparent;border-color:var(--line)}
+  #count{color:var(--muted);font-size:13px;margin:12px 0 0}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:24px 20px;padding:20px 0 48px}
+  .card{display:flex;flex-direction:column;min-width:0}
+  .card img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#eeece8;border:1px solid var(--line)}
+  .body{padding:10px 0 0;display:flex;flex-direction:column;gap:4px}
+  .addr{font-weight:600;font-size:14px;line-height:1.3}
+  .sub{color:var(--muted);font-size:12.5px}
+  .price{font-size:17px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px}
+  .sold{border-top:1px solid var(--line);padding-top:8px;margin-top:8px;font-size:12.5px;color:var(--muted);
+        display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+  .sold b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .jump{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .jump.up{color:var(--up)} .jump.down{color:var(--down)} .jump.none{color:var(--muted);font-weight:400}
+  .reacts{display:flex;gap:4px;margin-top:8px}
+  .reacts button{font-size:12px;padding:4px 8px;border-color:var(--line);background:transparent;color:var(--muted)}
+  .reacts button:hover{color:var(--ink);border-color:var(--line-strong)}
+  .reacts button[disabled]{opacity:.5;cursor:default}
+  .card a.p24{font-size:12px;color:var(--muted);margin-top:8px}
+
+  h2{font-size:18px;font-weight:600;margin:40px 0 6px}
+  .lede{color:var(--muted);font-size:13px;margin:0 0 12px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:500;font-size:12px}
   td.num{text-align:right;font-variant-numeric:tabular-nums}
-  .scroll{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:14px}
-  footer{color:var(--dim);font-size:13px;padding:30px 0 60px;border-top:1px solid var(--line)}
-  .empty{color:var(--dim);padding:30px 0}
+  .scroll{max-height:520px;overflow:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  footer{color:var(--muted);font-size:12.5px;padding:28px 0 56px;border-top:1px solid var(--line);margin-top:40px}
+  footer p{margin:0 0 6px;max-width:75ch}
+  .empty{color:var(--muted);padding:24px 0}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>ARE YOU <span>JAS?</span></h1>
-    <p class="tag">Cape Town property, priced by the hopeful. What it last sold for, what it's asking now, and the jump in between.</p>
-    <div class="stats" id="stats"></div>
+    <h1>Are You Jas</h1>
+    <p class="tag">Cape Town property, listed with the price it last sold for and the price being asked now. Asking prices come from Property24 listings. Sold prices come from the Deeds Office record via Property24, from agency sold listings, and from published transfer lists.</p>
+    <p class="stats" id="stats"></p>
   </header>
 
   <div class="bar">
-    <input type="search" id="q" placeholder="Search street or suburb">
-    <select id="f-suburb"><option value="">All suburbs</option></select>
-    <select id="f-kind"><option value="">All types</option></select>
-    <select id="f-beds"><option value="">Any beds</option></select>
-    <select id="f-baths"><option value="">Any baths</option></select>
-    <input type="number" id="f-min" placeholder="Min R" step="100000" min="0" style="width:120px">
-    <input type="number" id="f-max" placeholder="Max R" step="100000" min="0" style="width:120px">
-    <select id="sort">
-      <option value="jump">Biggest jump first</option>
-      <option value="price">Price: high to low</option>
-      <option value="cheap">Price: low to high</option>
-      <option value="beds">Most bedrooms</option>
-      <option value="new">Newest listings</option>
+    <input type="search" id="q" placeholder="Street or suburb">
+    <select id="f-suburb" aria-label="Suburb"><option value="">All suburbs</option></select>
+    <select id="f-kind" aria-label="Property type"><option value="">All types</option></select>
+    <select id="f-beds" aria-label="Minimum bedrooms"><option value="">Any beds</option></select>
+    <select id="f-baths" aria-label="Minimum bathrooms"><option value="">Any baths</option></select>
+    <input type="number" id="f-min" placeholder="Min price" step="100000" min="0" aria-label="Minimum price">
+    <input type="number" id="f-max" placeholder="Max price" step="100000" min="0" aria-label="Maximum price">
+    <select id="sort" aria-label="Sort">
+      <option value="jump">Biggest jump</option>
+      <option value="price">Price, high to low</option>
+      <option value="cheap">Price, low to high</option>
+      <option value="beds">Bedrooms</option>
+      <option value="new">Newest</option>
     </select>
-    <label class="chk"><input type="checkbox" id="onlySold"> Only with a sold price</label>
-    <button id="reset" title="Clear filters">Clear</button>
+    <label class="chk"><input type="checkbox" id="onlySold"> Known sold price only</label>
+    <button id="reset">Clear</button>
   </div>
-  <p class="lede" id="count"></p>
+  <p id="count"></p>
 
   <div class="grid" id="grid"></div>
 
-  <h2 id="soldTitle">What actually sold (Rondebosch)</h2>
+  <h2>Recorded sales</h2>
   <p class="lede" id="soldLede"></p>
   <div class="scroll"><table id="soldTable"></table></div>
 
-  <!-- Comments: giscus (GitHub Discussions) is the zero-backend option.
-       Repo must be public + Discussions on, then https://giscus.app gives you the two ids.
-  <h2>Talk your nonsense</h2>
-  <script src="https://giscus.app/client.js"
-          data-repo="ISAAC/areyoujas" data-repo-id="R_xxx" data-category="General"
-          data-category-id="DIC_xxx" data-mapping="pathname" data-theme="dark"
-          data-reactions-enabled="1" data-loading="lazy" crossorigin="anonymous" async></script>
+  <!-- Comments: giscus (GitHub Discussions). Needs a public repo and the two ids from giscus.app.
+  <script src="https://giscus.app/client.js" data-repo="moonshotdynamics/areyoujas" data-repo-id="R_x"
+          data-category="General" data-category-id="DIC_x" data-mapping="pathname" data-loading="lazy" async></script>
   -->
 
   <footer>
-    <p>Asking prices live from Property24 listings. Sold prices from the Deeds Office record via Property24, and from audited transfer lists (Real Estate Insider). Listings and sold data may lag the market — this is a gossip site, not a valuation.</p>
+    <p>Sold prices are the Deeds Office transfer figure where available, otherwise the price an agency advertised as achieved. Listings and sale records lag the market; nothing here is a valuation.</p>
     <p id="stamp"></p>
   </footer>
 </div>
@@ -107,11 +113,9 @@
 <script>
 const rand = n => "R" + Math.round(n).toLocaleString("en-ZA").replace(/,/g, " ");
 const mil  = n => "R" + (n/1e6).toFixed(n >= 1e7 ? 1 : 2).replace(/\.0+$/, "") + "m";
+const jumpClass = j => j == null ? "none" : j > 0 ? "up" : j < 0 ? "down" : "none";
 
-function jumpClass(j){ return j == null ? "" : j >= 100 ? "hot" : j >= 40 ? "warm" : "ok"; }
-
-let DATA = null, state = {q:"", sort:"jump", onlySold:false};
-let REACTS = {};                                  // {id: {jas: n, ...}}, empty if the API isn't there
+let DATA = null, REACTS = {}, state = {q:"", sort:"jump", onlySold:false};
 const voted = k => (localStorage.getItem(k) || "").split(",").filter(Boolean);
 const n = (id, kind) => (REACTS[id] || {})[kind] || 0;
 
@@ -134,43 +138,39 @@ function wireReacts(){
 
 function renderStats(){
   const s = DATA.stats;
-  const el = document.getElementById("stats");
-  el.innerHTML = `
-    <div class="stat"><b>${s.listings}</b><small>listings tracked</small></div>
-    <div class="stat"><b>${s.suburbs ?? 1}</b><small>suburbs</small></div>
-    <div class="stat"><b>${s.matched}</b><small>with a known last sale</small></div>
-    <div class="stat"><b>${s.biggest_jump == null ? "—" : "+" + s.biggest_jump + "%"}</b><small>biggest jump</small></div>
-    <div class="stat"><b>${mil(s.median_ask)}</b><small>median asking</small></div>`;
+  document.getElementById("stats").innerHTML =
+    `<b>${s.listings}</b> listings over <b>${s.suburbs ?? 1}</b> suburbs, ` +
+    `<b>${s.matched}</b> with a known last sale` +
+    (s.median_ask ? `, median asking <b>${mil(s.median_ask)}</b>` : "") +
+    (s.biggest_jump == null ? "" : `, biggest jump <b>+${s.biggest_jump}%</b>`);
 }
 
 function card(c){
   const sold = c.sold
-    ? `<div class="sold">Last sold <b>${mil(c.sold)}</b> · ${c.sold_year}
-         ${c.jump == null ? "" : `<span class="jump ${jumpClass(c.jump)}">${c.jump > 0 ? "+" : ""}${c.jump}%</span>`}
-       </div>`
-    : `<div class="sold">Last sold: <i>not on record</i></div>`;
+    ? `<div class="sold"><span>Last sold <b>${mil(c.sold)}</b>${c.sold_year ? " in " + c.sold_year : ""}</span>
+         <span class="jump ${jumpClass(c.jump)}">${c.jump > 0 ? "+" : ""}${c.jump}%</span></div>`
+    : `<div class="sold"><span>Last sold price not on record</span><span class="jump none"></span></div>`;
   return `<div class="card">
     ${c.image ? `<img loading="lazy" src="${c.image}" alt="">` : ""}
     <div class="body">
       <div class="addr">${c.address || "Address on request"}</div>
-      <div class="sub">${c.suburb} · ${c.beds ?? "?"} bed · ${c.baths ?? "?"} bath${c.erf ? " · " + c.erf + " m²" : ""}</div>
+      <div class="sub">${c.suburb || ""}${c.beds ? " · " + c.beds + " bed" : ""}${c.baths ? " · " + c.baths + " bath" : ""}${c.erf ? " · " + c.erf + " m²" : ""}</div>
       <div class="price">${rand(c.price)}</div>
       ${sold}
       <div class="reacts" data-id="${c.id}">
-        <button data-kind="jas">🔥 <span>${n(c.id,"jas")}</span></button>
-        <button data-kind="yoh">😭 <span>${n(c.id,"yoh")}</span></button>
-        <button data-kind="lol">😂 <span>${n(c.id,"lol")}</span></button>
+        <button data-kind="jas" aria-label="Jas"><span>${n(c.id,"jas")}</span> jas</button>
+        <button data-kind="yoh" aria-label="Yoh"><span>${n(c.id,"yoh")}</span> yoh</button>
+        <button data-kind="lol" aria-label="Laughing"><span>${n(c.id,"lol")}</span> lol</button>
       </div>
-      <a class="p24" href="${c.url}" target="_blank" rel="noopener">View on Property24 ↗</a>
+      <a class="p24" href="${c.url}" target="_blank" rel="noopener">Property24 listing</a>
     </div></div>`;
 }
 
 function fillFilters(){
-  const uniq = (k, min) => [...new Set(DATA.listings.map(c => c[k]).filter(v => v != null))]
-        .sort((a, b) => (min ? a - b : String(a).localeCompare(String(b))));
-  const opt = v => `<option value="${v}">${v}</option>`;
-  document.getElementById("f-suburb").innerHTML += uniq("suburb").map(opt).join("");
-  document.getElementById("f-kind").innerHTML   += uniq("kind").map(opt).join("");
+  const uniq = (k, numeric) => [...new Set(DATA.listings.map(c => c[k]).filter(v => v != null))]
+        .sort((a, b) => numeric ? a - b : String(a).localeCompare(String(b)));
+  document.getElementById("f-suburb").innerHTML += uniq("suburb").map(v => `<option value="${v}">${v}</option>`).join("");
+  document.getElementById("f-kind").innerHTML   += uniq("kind").map(v => `<option value="${v}">${v}</option>`).join("");
   document.getElementById("f-beds").innerHTML   += uniq("beds", true).map(v => `<option value="${v}">${v}+ bed</option>`).join("");
   document.getElementById("f-baths").innerHTML  += uniq("baths", true).map(v => `<option value="${v}">${v}+ bath</option>`).join("");
 }
@@ -196,26 +196,25 @@ function render(){
                   : s === "beds" ? (b.beds ?? 0) - (a.beds ?? 0)
                   : s === "cheap" ? a.price - b.price
                   : (b.id > a.id ? 1 : -1));
-  document.getElementById("count").textContent =
-    `${rows.length} of ${DATA.listings.length} listings`;
-  const g = document.getElementById("grid");
-  g.innerHTML = rows.length ? rows.map(card).join("") : `<p class="empty">Nothing matches those filters.</p>`;
+  document.getElementById("count").textContent = `${rows.length} of ${DATA.listings.length} listings`;
+  document.getElementById("grid").innerHTML =
+    rows.length ? rows.map(card).join("") : `<p class="empty">No listings match those filters.</p>`;
 }
 
 function renderSold(){
-  const rows = DATA.sold.slice(0, 60);
-  document.getElementById("soldLede").textContent =
-    `${DATA.sold.length} recorded transfers, highest first. This is the number an asking price has to beat.`;
+  const rows = DATA.sold.slice(0, 80);
+  document.getElementById("soldLede").textContent = `${DATA.sold.length} recorded transfers, highest first.`;
   document.getElementById("soldTable").innerHTML =
     `<thead><tr><th>Address</th><th>Size</th><th class="num">Sold for</th><th class="num">R/m²</th></tr></thead><tbody>` +
-    rows.map(r => `<tr><td>${r.address}</td><td>${r.size ? r.size + " m²" : "—"}</td>
+    rows.map(r => `<tr><td>${r.address}</td><td>${r.size ? r.size + " m²" : ""}</td>
       <td class="num">${rand(r.price)}</td><td class="num">${Math.round(r.price / (r.size || 1)).toLocaleString("en-ZA")}</td></tr>`).join("") +
     `</tbody>`;
 }
 
 Promise.all([fetch("data.json").then(r => r.json()),
              fetch("/api/reacts").then(r => r.json()).catch(() => ({}))]).then(([d, reacts]) => {
-  DATA = d; REACTS = reacts || {}; renderStats(); fillFilters(); render(); renderSold(); wireReacts();
+  DATA = d; REACTS = reacts || {};
+  renderStats(); fillFilters(); render(); renderSold(); wireReacts();
   ["f-suburb","f-kind","f-beds","f-baths","f-min","f-max"].forEach(id => {
     const el = document.getElementById(id);
     el.oninput = el.onchange = render;
@@ -226,12 +225,12 @@ Promise.all([fetch("data.json").then(r => r.json()),
     document.getElementById("onlySold").checked = false;
     state.q = ""; state.onlySold = false; render();
   };
-  document.getElementById("stamp").textContent = "Data refreshed " + d.generated + ".";
+  document.getElementById("stamp").textContent = "Data for " + d.generated + ".";
   document.getElementById("q").oninput = e => { state.q = e.target.value; render(); };
   document.getElementById("sort").onchange = e => { state.sort = e.target.value; render(); };
   document.getElementById("onlySold").onchange = e => { state.onlySold = e.target.checked; render(); };
 }).catch(() => {
-  document.getElementById("grid").innerHTML = '<p class="empty">Data failed to load.</p>';
+  document.getElementById("grid").innerHTML = '<p class="empty">Listings could not be loaded.</p>';
 });
 </script>
 </body>
