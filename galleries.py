@@ -43,15 +43,18 @@ def gallery(html):
 
 
 def main(budget=30):
-    data = json.loads((HERE / "listings.json").read_text())
+    src = HERE / "listings.json"
+    before = src.stat().st_mtime_ns          # crawler may write while we run; see the guard below
+    data = json.loads(src.read_text())
     listings = data["listings"]
     urls = {c["id"]: c["url"] for c in json.loads((HERE / "data.json").read_text())["listings"]
             if c.get("url")}          # builds the listing URL the crawler uses
     subs = {s["name"]: (s["slug"], s["area"]) for s in json.loads((HERE / "suburbs.json").read_text())}
+    CACHE.mkdir(parents=True, exist_ok=True)
     todo = [l for l in listings if not l.get("images")]
     random.shuffle(todo)
-    todo.sort(key=lambda l: 0 if l.get("suburb") == "Rondebosch" else 1)
-    CACHE.mkdir(parents=True, exist_ok=True)
+    # cached pages first: they cost no requests, so a budget hit by throttling still applies them
+    todo.sort(key=lambda l: 0 if (CACHE / f"{l['id']}.html").exists() else 1)
     got = 0
     for l in todo[:budget]:
         f = CACHE / f"{l['id']}.html"
@@ -87,7 +90,11 @@ def main(budget=30):
             l["images"] = [f"https://images.prop24.com/{i}/Ensure1280x720" for i in ids]
             l["thumbs"] = [f"https://images.prop24.com/{i}/Crop525x350" for i in ids]
             got += 1
-    (HERE / "listings.json").write_text(json.dumps(data, indent=1))
+    # never clobber a crawl that finished while we were fetching: that race wiped 1,400 listings once
+    if src.stat().st_mtime_ns != before:
+        print("listings.json changed under us (crawler wrote) - leaving it alone")
+    else:
+        src.write_text(json.dumps(data, indent=1))
     have = sum(1 for l in listings if l.get("images"))
     print(f"{got} galleries fetched | {have}/{len(listings)} listings have galleries")
 
