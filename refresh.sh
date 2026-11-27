@@ -19,4 +19,6 @@ else
   git commit -qm "data: refresh $(date -u +%Y-%m-%d)"
   git push -q "https://x-access-token:${GITHUB_TOKEN}@github.com/moonshotdynamics/areyoujas.git" HEAD:main \
     && echo "pushed data"
+  # Railway does not auto-deploy this service on push; deploy the new commit explicitly.
+  python deploy.py || echo "deploy trigger failed"
 fi
