@@ -2,11 +2,11 @@
  "generated": "2026-11-28",
  "stats": {
   "scanned": 3855,
-  "listings": 1,
-  "matched": 1,
-  "suburbs": 1,
+  "listings": 2,
+  "matched": 2,
+  "suburbs": 2,
   "biggest_jump": 173,
-  "median_ask": 12950000
+  "median_ask": 34995000
  },
  "listings": [
   {
@@ -31,6 +31,24 @@
    "per_year": 173,
    "sold_source": "property24 deeds",
    "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117843182"
+  },
+  {
+   "id": "117613806",
+   "price": 34995000,
+   "address": "62 Geneva Drive",
+   "suburb": "Camps Bay",
+   "kind": "House",
+   "title": "5 Bedroom House",
+   "image": "https://images.prop24.com/386444849/Crop600x400",
+   "beds": 5,
+   "baths": 5,
+   "parking": 6,
+   "sold": 14000000,
+   "sold_year": 2017,
+   "jump": 150,
+   "per_year": 17,
+   "sold_source": "deeds (ErfCheck)",
+   "url": "https://www.property24.com/for-sale/rondebosch/cape-town/western-cape/8682/117613806"
   }
  ],
  "sold": [
@@ -132,6 +150,14 @@
    "size": 1929,
    "suburb": "Rondebosch",
    "source": "realestateinsider"
+  },
+  {
+   "address": "CAMPS BAY|62 GENEVA DRIVE",
+   "price": 14000000,
+   "year": 2017,
+   "size": 775,
+   "suburb": "Camps Bay",
+   "source": "deeds (ErfCheck)"
   },
   {
    "address": "RONDEBOSCH|9 SILWOOD ROAD",

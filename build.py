@@ -35,6 +35,15 @@ def load_sold():
             k = key(row.get("suburb", "")) + "|" + key(row["address"])
             out.setdefault(k, {"price": int(row["price"]), "year": None,
                                "suburb": row.get("suburb", ""), "source": "greeff sold"})
+    # deeds transfers via ErfCheck: keyed "suburb|address" already, and verified
+    # address-for-address before it was written (see erfcheck.py)
+    f = HERE / "sold_erfcheck.json"
+    if f.exists():
+        for k, v in json.loads(f.read_text()).items():
+            suburb, _, address = k.partition("|")
+            out.setdefault(key(suburb) + "|" + key(address),
+                           {"price": v["price"], "year": v.get("year"), "size": v.get("size"),
+                            "suburb": v.get("suburb", suburb), "source": v["source"]})
     # bulk transfers pulled from published audit lists
     f = HERE / "sold_audit.csv"
     if f.exists():

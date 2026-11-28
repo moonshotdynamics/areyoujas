@@ -4,6 +4,7 @@
 set -u
 cd "$(dirname "$0")"
 
+python erfcheck.py --budget=60 --for-hours=6 || echo "erfcheck: partial"   # deeds sold prices, houses only
 python sold.py --budget=80 || echo "sold: partial"     # the prize: deeds sold price per address, first in the queue
 python scrape.py --budget=90 --deep=60 || echo "scrape: partial"   # addresses next; P24 blocks an IP near 90 fetches
 python galleries.py 40 || echo "galleries: partial"   # photo galleries, budgeted; aborts on 503 and resumes from cache
@@ -13,7 +14,7 @@ python build.py  || exit 1
 # switch to a lock/queue if a second source service is added.
 git config user.email "crawler@areyoujas"
 git config user.name  "areyoujas crawler"
-git add listings.json sold.json data.json sold_audit.csv labels.json
+git add listings.json sold.json sold_erfcheck.json erfcheck_misses.json data.json sold_audit.csv labels.json
 if git diff --cached --quiet; then
   echo "no data changes"
 else
