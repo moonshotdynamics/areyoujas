@@ -131,12 +131,6 @@
   td.num{text-align:right;font-variant-numeric:tabular-nums}
   tbody tr:nth-child(even){background:#f8f4ea}
   .scroll{max-height:540px;overflow:auto;border:1px solid var(--line);border-radius:4px}
-  .receipt{margin:34px 0;border-top:1px solid var(--line);padding-top:16px}
-  .receipt summary{cursor:pointer;font-weight:600}
-  .receipt form{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
-  .receipt input{flex:1 1 12rem;padding:8px 10px;border:1px solid var(--line);border-radius:4px;background:#fff;font:inherit}
-  .receipt button{padding:8px 16px;border:0;border-radius:4px;cursor:pointer;background:var(--protea);color:#fff;font:inherit}
-  #rmsg{align-self:center;font-size:13px}
   footer{color:var(--muted);font-size:12.5px;padding:30px 0 60px;border-top:1px solid var(--line);margin-top:44px}
   footer p{margin:0 0 6px;max-width:76ch}
   .empty{color:var(--muted);padding:24px 0;font:13px var(--mono)}
@@ -210,21 +204,6 @@
   <h2>What Cape Town actually sold</h2>
   <p class="lede" id="soldLede"></p>
   <div class="scroll"><table id="soldTable"></table></div>
-
-  <details class="receipt">
-    <summary>Know what a place sold for? Add the receipt.</summary>
-    <form id="rf">
-      <input id="r-address" maxlength="80" placeholder="Street address, e.g. 9 Rouwkoop Road" required>
-      <input id="r-suburb" maxlength="60" placeholder="Suburb" required>
-      <input id="r-bought" type="number" min="50000" step="1000" placeholder="Bought for (R)" required>
-      <input id="r-year" type="number" min="1980" max="2026" placeholder="Year bought" required>
-      <input id="r-asking" type="number" min="50000" step="1000" placeholder="Asking now (R)" required>
-      <button type="submit">Add it</button>
-      <span id="rmsg" role="status"></span>
-    </form>
-    <p class="lede">Owner-supplied, unverified. That is the trade: nobody else will hand us the number.</p>
-    <div class="scroll"><table id="rtable"></table></div>
-  </details>
 
   <h2>Sold, then back on the market</h2>
   <p class="lede">The pairs. Everything else on the market is missing a deeds sale, so it does not appear here yet.</p>
@@ -486,34 +465,6 @@ Promise.all([fetch("data.json").then(r => r.json()),
 }).catch(() => {
   document.getElementById("grid").innerHTML = '<p class="empty">Listings could not be loaded.</p>';
 });
-</script>
-<script>
-(function(){                                  // owner receipts: the one sold-price source no one can block
-  const t = document.getElementById("rtable");
-  if (!t) return;
-  const m = n => "R" + (n / 1e6).toFixed(2).replace(".", ",") + "m";
-  function draw(rows) {
-    t.innerHTML = rows.length
-      ? '<thead><tr><th>Address</th><th>Suburb</th><th class="num">Paid</th><th class="num">Asking</th><th class="num">Jas</th></tr></thead><tbody>' +
-        rows.map(r => { const j = Math.round((r.asking / r.bought - 1) * 100);
-          return `<tr><td>${r.address}</td><td>${r.suburb}</td><td class="num">${m(r.bought)} <small>${r.year}</small></td>` +
-                 `<td class="num">${m(r.asking)}</td><td class="num">${j > 0 ? "+" : ""}${j}%</td></tr>`; }).join("") + "</tbody>"
-      : '<tbody><tr><td class="empty">No receipts yet. Be the first.</td></tr></tbody>';
-  }
-  const load = () => fetch("/api/receipts").then(r => r.json()).then(draw).catch(() => draw([]));
-  load();
-  document.getElementById("rf").onsubmit = e => {
-    e.preventDefault();
-    const v = id => document.getElementById(id).value;
-    fetch("/api/receipt", { method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ address: v("r-address"), suburb: v("r-suburb"), bought: +v("r-bought"),
-                             year: +v("r-year"), asking: +v("r-asking") }) })
-      .then(r => r.json()).then(j => {
-        document.getElementById("rmsg").textContent = j.ok ? "Added. Thank you." : (j.error || "Nope");
-        if (j.ok) { e.target.reset(); load(); }
-      }).catch(() => document.getElementById("rmsg").textContent = "Could not reach the server.");
-  };
-})();
 </script>
 </body>
 </html>
