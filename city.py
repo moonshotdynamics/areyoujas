@@ -25,6 +25,9 @@ UA = "Mozilla/5.0 (compatible; areyoujas/1.0)"
 ABBREV = {"rd": "road", "st": "street", "ave": "avenue", "av": "avenue", "cres": "crescent",
           "dr": "drive", "pl": "place", "cl": "close", "blvd": "boulevard", "str": "street",
           "la": "lane", "tce": "terrace", "pde": "parade", "hwy": "highway"}
+# The City's own spelling differs from the suburb names our crawler uses.
+ALIAS = {"Bo Kaap": "BO-KAAP", "Claremont Upper": "CLAREMONT", "Kenilworth Upper": "KENILWORTH",
+         "Wynberg Upper": "WYNBERG NU", "Pinati": "PINATI ESTATE"}
 TYPES = {"road", "street", "avenue", "crescent", "drive", "place", "close", "lane",
          "terrace", "way", "walk", "court", "parkway", "parade", "boulevard", "weg"}
 
@@ -44,7 +47,7 @@ def fetch(limit=None):
         name = s["name"]
         if name in streets:
             continue
-        up = name.upper().replace("'", "''")
+        up = ALIAS.get(name, name.upper()).replace("'", "''")
         rows = []
         try:
             for where in (f"OFC_SBRB_NAME='{up}'", f"OFC_SBRB_NAME LIKE '%{up}%'"):
