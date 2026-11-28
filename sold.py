@@ -26,6 +26,7 @@ AREA, SUBURB = "8682", "rondebosch"
 COUNT = [0]
 BUDGET = [80]
 BLOCKED = [False]                                  # a 503 is not "no sale on record"
+FAILS = [0]                                        # one 404 is a bad slug, two in a row is a block
 
 
 def _get(url, name):
@@ -36,8 +37,11 @@ def _get(url, name):
         return None
     COUNT[0] += 1
     html = get(url, name)
-    if html is None:                               # fetch failed: throttled, not empty
-        BLOCKED[0] = True
+    if html is None:                               # failed fetch: could be a 404 or a 503
+        FAILS[0] += 1
+        BLOCKED[0] = FAILS[0] >= 2
+    else:
+        FAILS[0] = 0
     return html
 
 
