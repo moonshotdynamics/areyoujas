@@ -44,16 +44,20 @@ def fetch(limit=None):
         name = s["name"]
         if name in streets:
             continue
-        q = {"where": f"OFC_SBRB_NAME='{name.upper().replace(chr(39), chr(39) * 2)}'",
-             "outFields": "STR_NAME,LU_STR_NAME_TYPE", "returnDistinctValues": "true",
-             "returnGeometry": "false", "f": "json"}
-        url = API + "?" + urllib.parse.urlencode(q)
+        up = name.upper().replace("'", "''")
+        rows = []
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": UA})
-            with urllib.request.urlopen(req, timeout=60) as r:
-                j = json.loads(r.read())
-            rows = [[f["attributes"]["STR_NAME"], f["attributes"]["LU_STR_NAME_TYPE"]]
-                    for f in j.get("features", [])]
+            for where in (f"OFC_SBRB_NAME='{up}'", f"OFC_SBRB_NAME LIKE '%{up}%'"):
+                q = {"where": where, "outFields": "STR_NAME,LU_STR_NAME_TYPE",
+                     "returnDistinctValues": "true", "returnGeometry": "false", "f": "json"}
+                req = urllib.request.Request(API + "?" + urllib.parse.urlencode(q),
+                                             headers={"User-Agent": UA})
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    j = json.loads(r.read())
+                rows = [[f["attributes"]["STR_NAME"], f["attributes"]["LU_STR_NAME_TYPE"]]
+                        for f in j.get("features", [])]
+                if rows:
+                    break                      # exact name wins; LIKE only for renamed suburbs
         except Exception as e:
             print(f"  ! {name}: {type(e).__name__} {e}")
             continue
