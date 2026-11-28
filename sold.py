@@ -13,6 +13,7 @@ import re
 import sys
 from pathlib import Path
 
+import city
 import ocr
 from scrape import get, CACHE
 
@@ -135,7 +136,8 @@ def crawl(budget=80):
         if norm(l["address"]) in have or norm(l["address"]) in misses:
             continue
         slug, area = subs[l["suburb"]]
-        jobs.setdefault((slug, area, parsed[1]), []).append((parsed[0], l["address"], l["suburb"]))
+        street = city.canonical(l["suburb"], parsed[1])     # "rouwkoop-rd" -> "rouwkoop-road"
+        jobs.setdefault((slug, area, street), []).append((parsed[0], l["address"], l["suburb"]))
 
     for (slug, area, street), items in sorted(jobs.items()):
         if COUNT[0] >= budget:
